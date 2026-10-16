@@ -1,5 +1,6 @@
-import { Brain, ChevronRight, Droplet, MessageCircle, Rabbit, Sparkles, UserRound } from "lucide-react";
+import { Brain, ChevronRight, Droplet, Lock, MessageCircle, Rabbit, Sparkles, UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
+import type { AnalysisKey, AnalysisStatus } from "@/components/analysis/AnalysisCard";
 import { BUTTON_CLASS } from "@/components/ui/Button";
 import { Chip } from "@/components/ui/Chip";
 import { GlassCard } from "@/components/ui/GlassCard";
@@ -22,6 +23,17 @@ const STAT_KEYS = [
   "adventure",
   "charisma",
 ] as const;
+
+// 스탯에 들어가는 분석 6개 (05_STATS_AND_AI.md 가중치 표). 전용 카드 그림이 없는 것은 아이콘 그림을 쓴다
+// 상태는 로그인·분석 연결 후 사용자 데이터로 바뀐다
+const HOME_ANALYSES: { id: AnalysisKey; art: string; status: AnalysisStatus }[] = [
+  { id: "mbti", art: "/assets/analysis/card-mbti.webp", status: "available" },
+  { id: "saju", art: "/assets/analysis/card-saju.webp", status: "locked" },
+  { id: "palm", art: "/assets/analysis/card-palm.webp", status: "locked" },
+  { id: "zodiacBlood", art: "/assets/analysis/icon-zodiacBlood.webp", status: "available" },
+  { id: "face", art: "/assets/analysis/icon-face.webp", status: "locked" },
+  { id: "name", art: "/assets/analysis/icon-name.webp", status: "locked" },
+];
 
 // 홈 — 종합 대시보드. 로그인·분석 연결 전이라 빈 상태로 그린다
 export default function Page() {
@@ -80,13 +92,30 @@ export default function Page() {
       {/* 분석 카드 */}
       <section>
         <SectionTitle>{t("analysesTitle")}</SectionTitle>
-        <div className="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none]">
-          {(["mbti", "saju", "palm"] as const).map((id) => (
-            <Link key={id} href="/analyze" className="w-[44%] shrink-0 snap-start">
-              <ImageCard src={`/assets/analysis/card-${id}.webp`} className="aspect-[3/4]" sizes="200px">
-                <div className="flex h-full flex-col justify-end p-4">
-                  <span className="font-display text-xl leading-tight">{ta(`${id}.title`)}</span>
-                  <span className="mt-1 text-xs text-on-image-muted">{ta(`${id}.desc`)}</span>
+        <div className="grid grid-cols-3 gap-2.5">
+          {HOME_ANALYSES.map(({ id, art, status }) => (
+            <Link key={id} href="/analyze" aria-label={ta(`${id}.title`)}>
+              <ImageCard
+                src={art}
+                className={`aspect-[3/4] ${
+                  status === "completed"
+                    ? "glass-gold"
+                    : status === "available"
+                      ? "glass-violet"
+                      : "opacity-55 saturate-50"
+                }`}
+                sizes="140px"
+              >
+                {status === "locked" && (
+                  <Lock className="absolute top-2 right-2 size-3.5 text-on-image-muted" aria-hidden />
+                )}
+                <div className="flex h-full flex-col justify-end p-2.5">
+                  <span className="font-display text-[15px] leading-tight">{ta(`${id}.title`)}</span>
+                  <span
+                    className={`mt-0.5 text-[10px] ${status === "available" ? "text-primary" : "text-on-image-muted"}`}
+                  >
+                    {ta(`status.${status}`)}
+                  </span>
                 </div>
               </ImageCard>
             </Link>
