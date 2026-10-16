@@ -49,6 +49,7 @@ export const POST = handler(async (req) => {
   await writeBaseAnalyses(uid, profile);
   await recomputeStats(uid);
   await bumpAdminCounter("signup");
+  if (profile.birthTime) await bumpAdminCounter("signup_time_known");
   after(() => generateReport(uid).catch((e) => console.error("report", e)));
   return json({ ok: true });
 });

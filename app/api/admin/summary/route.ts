@@ -6,11 +6,12 @@ export const GET = handler(async (req) => {
   await requireAdmin(req);
   const today = new Date(Date.now() + 9 * 3600000).toISOString().slice(0, 10);
   const days = Array.from({ length: 7 }, (_, i) => new Date(Date.now() - i * 86400000).toISOString().slice(0, 10));
+  const days30 = Array.from({ length: 30 }, (_, i) => new Date(Date.now() - i * 86400000).toISOString().slice(0, 10));
   const tomorrow = new Date(Date.now() + 9 * 3600000 + 86400000).toISOString().slice(0, 10);
   const [users, publicDiary, metrics, metaToday, metaTomorrow, reports] = await Promise.all([
     db().collection("users").count().get(),
     db().collection("publicDiary").count().get(),
-    Promise.all(days.map((d) => db().doc(`stats_admin/${d}`).get())),
+    Promise.all(days30.map((d) => db().doc(`stats_admin/${d}`).get())),
     db().doc(`dailyMeta/${today}`).get(),
     db().doc(`dailyMeta/${tomorrow}`).get(),
     db().collection("reports_moderation").where("status", "==", "open").limit(50).get(),
@@ -18,6 +19,11 @@ export const GET = handler(async (req) => {
   return json({
     totals: { users: users.data().count, publicDiary: publicDiary.data().count },
     metrics: days.map((d, i) => ({ date: d, ...(metrics[i].data() ?? {}) })),
+    // 분석 퍼널 (08_ADMIN.md, P1): 최근 30일 단계별 완료 수
+    funnel: ["signup", "signup_time_known", "analysis_mbti", "analysis_palm"].map((k) => ({
+      key: k,
+      count: metrics.reduce((s, m) => s + ((m.data()?.[k] as number) ?? 0), 0),
+    })),
     content: { [today]: metaToday.data()?.status ?? {}, [tomorrow]: metaTomorrow.data()?.status ?? {} },
     reports: reports.docs.map((d) => ({ id: d.id, ...d.data(), createdAt: undefined })),
   });

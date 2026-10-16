@@ -74,6 +74,22 @@ try {
   const map = await call("map", "GET", "/api/map");
   console.log("     nodes:", map.data.nodes?.length, "| optIn needed:", !!map.data.needsOptIn);
 
+  // 월간 회고: 일기 AI 사용 허용 + 이번 달 일기 3개 이상
+  const ym = today.slice(0, 7);
+  const days = [1, 2, 3].map((n) => `${ym}-${String(n).padStart(2, "0")}`).filter((d) => d <= today);
+  for (const d of days) await call(`diary ${d}`, "PUT", `/api/diary/${d}`, { text: `${d} 테스트 기록`, mood: "calm", visibility: "private" });
+  const retroDenied = await call("retro without consent (→403)", "POST", "/api/diary/retro", { month: ym });
+  console.log("     denied:", retroDenied.status === 403);
+  await call("settings diaryForAI", "PATCH", "/api/settings", { diaryForAI: true });
+  const retro = await call("retro generate", "POST", "/api/diary/retro", { month: ym });
+  console.log("     retro:", retro.data.retro?.title, "| highlights:", retro.data.retro?.highlights?.length);
+  const prevYear = `${Number(today.slice(0, 4)) - 1}${today.slice(4)}`;
+  await call("diary last year", "PUT", `/api/diary/${prevYear}`, { text: "작년 오늘의 기록", mood: "good", visibility: "private" }).catch(() => {});
+  const otd = await call("on this day", "GET", `/api/diary/onthisday?date=${today}`);
+  console.log("     on this day:", JSON.stringify(otd.data.items));
+  const card = await fetch(`${BASE}/api/share-card?kind=fortune&lang=ko&date=${today}&score=70&text=${encodeURIComponent("테스트 카드")}`);
+  console.log(`${card.ok ? "OK  " : "FAIL"} ${card.status} share card ${card.headers.get("content-type")}`);
+
   const memory = await call("memory list", "GET", "/api/memory");
   console.log("     memories:", memory.data.items?.length);
   const admin = await call("admin (non-admin → 403)", "GET", "/api/admin/summary");

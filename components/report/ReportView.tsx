@@ -15,7 +15,7 @@ import type { Report } from "@/lib/client/types";
 export function ReportView() {
   const t = useTranslations("pages.report");
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 lg:mx-auto lg:w-full lg:max-w-3xl">
       <BackHeader href="/" title={t("title")} />
       <Gate>{() => <ReportInner />}</Gate>
     </div>

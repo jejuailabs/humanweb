@@ -38,7 +38,7 @@ export function LoginView() {
   }
 
   return (
-    <div className="flex min-h-[calc(100dvh-8rem)] flex-col items-center justify-end gap-6 pb-6 text-center">
+    <div className="mx-auto w-full max-w-md flex min-h-[calc(100dvh-8rem)] flex-col items-center justify-end gap-6 pb-6 text-center">
       <Logo size={44} />
       <div>
         <h1 className="font-display text-3xl text-text">{t("loginTitle")}</h1>

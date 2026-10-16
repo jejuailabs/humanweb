@@ -39,7 +39,7 @@ export function AnalyzeHub() {
         <p className="text-sm text-muted">{t("progress", { done, total })}</p>
         <StepDots done={done} total={total} />
       </section>
-      <section className="flex flex-col gap-3">
+      <section className="flex flex-col gap-3 lg:grid lg:grid-cols-2">
         {items.map((x) =>
           x.href && x.status !== "locked" ? (
             <Link key={x.id} href={x.href}>

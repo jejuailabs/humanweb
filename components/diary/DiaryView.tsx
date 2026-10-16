@@ -1,10 +1,12 @@
 "use client";
 
-import { CalendarDays, ChevronLeft, ChevronRight, Flag, Globe, Heart, List, Lock } from "lucide-react";
+import { CalendarDays, ChevronLeft, ChevronRight, Flag, Globe, Heart, History, List, Lock, Sparkles } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { Gate, Loading } from "@/components/auth/Gate";
+import { BUTTON_CLASS } from "@/components/ui/Button";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { SectionTitle } from "@/components/ui/SectionTitle";
 import { SEGMENTED_WRAP, segmentedItem } from "@/components/ui/segmented";
 import { api, localDateKey, useApi } from "@/lib/client/api";
 import type { DiaryEntry, Me } from "@/lib/client/types";
@@ -22,8 +24,12 @@ function DiaryInner({ me }: { me: Me }) {
   const [view, setView] = useState<View>("calendar");
 
   return (
-    <div className="flex flex-col gap-5">
-      <DiaryComposer date={today} isToday defaultPublic={me.settings.diaryDefaultPublic} />
+    <div className="flex flex-col gap-5 lg:grid lg:grid-cols-2 lg:items-start lg:gap-8">
+      <div className="lg:sticky lg:top-10">
+        <DiaryComposer date={today} isToday defaultPublic={me.settings.diaryDefaultPublic} />
+      </div>
+      <div className="flex flex-col gap-5">
+      <OnThisDay date={today} />
       <div className={`${SEGMENTED_WRAP} grid-cols-3`}>
         {([
           ["calendar", CalendarDays, t("viewCalendar")],
@@ -36,7 +42,8 @@ function DiaryInner({ me }: { me: Me }) {
           </button>
         ))}
       </div>
-      {view === "explore" ? <Explore /> : <Mine view={view} />}
+      {view === "explore" ? <Explore /> : <Mine view={view} diaryForAI={me.settings.diaryForAI} />}
+      </div>
     </div>
   );
 }
@@ -53,7 +60,7 @@ function shiftMonth(ym: string, d: number) {
 }
 const moodEmoji = (m: string | null) => MOODS.find((x) => x.key === m)?.emoji;
 
-function Mine({ view }: { view: "calendar" | "list" }) {
+function Mine({ view, diaryForAI }: { view: "calendar" | "list"; diaryForAI: boolean }) {
   const t = useTranslations("pages.diary");
   const locale = useLocale();
   const [ym, setYm] = useState(localDateKey().slice(0, 7));
@@ -106,7 +113,74 @@ function Mine({ view }: { view: "calendar" | "list" }) {
       ) : (
         <p className="py-6 text-center text-sm text-muted">{t("empty")}</p>
       )}
+      <Retro month={ym} monthLabel={monthLabel} entries={data?.entries.length ?? 0} diaryForAI={diaryForAI} />
     </GlassCard>
+  );
+}
+
+// "N년 전 오늘" (P2)
+function OnThisDay({ date }: { date: string }) {
+  const t = useTranslations("pages.diary");
+  const { data } = useApi<{ items: { years: number; date: string; text: string; mood: string | null }[] }>(`/api/diary/onthisday?date=${date}`);
+  if (!data?.items.length) return null;
+  return (
+    <GlassCard variant="gold" className="flex flex-col gap-3">
+      {data.items.map((it) => (
+        <div key={it.date} className="flex items-start gap-3">
+          <History className="mt-1 size-4 shrink-0 text-gold" aria-hidden />
+          <span className="flex flex-col">
+            <span className="text-xs text-gold">{t("onThisDay", { years: it.years })} {moodEmoji(it.mood)}</span>
+            <span className="font-display text-lg text-text">{it.text}</span>
+          </span>
+        </div>
+      ))}
+    </GlassCard>
+  );
+}
+
+// 월간 회고 (P2) — 일기 AI 사용을 허용한 경우에만 (절대 규칙 10)
+function Retro({ month, monthLabel, entries, diaryForAI }: { month: string; monthLabel: string; entries: number; diaryForAI: boolean }) {
+  const t = useTranslations("pages.diary");
+  const tc = useTranslations("common");
+  const { data, mutate } = useApi<{ retro: { title: string; summary: string; highlights: string[] } | null }>(`/api/diary/retro?month=${month}`);
+  const [busy, setBusy] = useState(false);
+  const [failed, setFailed] = useState(false);
+  const retro = data?.retro;
+
+  async function make() {
+    setBusy(true);
+    setFailed(false);
+    try {
+      await api("/api/diary/retro", { method: "POST", json: { month } });
+      await mutate();
+    } catch {
+      setFailed(true);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  return (
+    <div className="mt-2 border-t border-border pt-4">
+      <SectionTitle>{t("retroTitle", { month: monthLabel })}</SectionTitle>
+      {retro ? (
+        <div className="flex flex-col gap-2">
+          <p className="font-display text-lg text-gold">{retro.title}</p>
+          <p className="text-sm leading-relaxed text-text">{retro.summary}</p>
+          <ul className="flex flex-col gap-1 text-sm text-muted">{retro.highlights.map((h, i) => <li key={i}>✦ {h}</li>)}</ul>
+        </div>
+      ) : !diaryForAI ? (
+        <p className="text-xs text-muted">{t("retroNeedConsent")}</p>
+      ) : entries < 3 ? (
+        <p className="text-xs text-muted">{t("retroNeedEntries")}</p>
+      ) : (
+        <button type="button" disabled={busy} onClick={make} className={`${BUTTON_CLASS.ghost} w-full`}>
+          <Sparkles className={`size-4 ${busy ? "animate-spin" : ""}`} aria-hidden />
+          {busy ? t("retroMaking") : t("retroMake")}
+        </button>
+      )}
+      {failed && <p role="alert" className="mt-2 text-center text-xs text-danger">{tc("error")}</p>}
+    </div>
   );
 }
 

@@ -16,7 +16,7 @@ type Msg = { id: string; role: "user" | "assistant"; text: string };
 export function ChatView() {
   const t = useTranslations("pages.chat");
   return (
-    <div className="flex min-h-[calc(100dvh-11rem)] flex-col gap-4">
+    <div className="flex min-h-[calc(100dvh-11rem)] flex-col gap-4 lg:mx-auto lg:min-h-[calc(100dvh-7rem)] lg:w-full lg:max-w-2xl">
       <header className="flex flex-col items-center pt-2 text-center">
         <span className="flex size-16 items-center justify-center rounded-full border border-gold text-gold shadow-[0_0_30px_-6px_var(--glow-gold)]">
           <Sparkle className="size-7" />

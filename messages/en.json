@@ -191,7 +191,14 @@
       "heart": "Heart",
       "fortuneOfDay": "That day's fortune {score}",
       "monthPrev": "Previous month",
-      "monthNext": "Next month"
+      "monthNext": "Next month",
+      "shareCard": "Share as card",
+      "onThisDay": "{years} year(s) ago today",
+      "retroTitle": "{month} in review",
+      "retroMake": "Write this month's review",
+      "retroNeedConsent": "Allow 'AI may use my diary' in settings to get a monthly review",
+      "retroNeedEntries": "You need at least 3 entries for a monthly review",
+      "retroMaking": "Writing your review"
     },
     "analyze": {
       "title": "Discover Yourself",
@@ -535,6 +542,16 @@
     "hide": "Hide",
     "restore": "Restore",
     "noReports": "No open reports",
-    "aiUsage": "AI calls"
+    "aiUsage": "AI calls",
+    "funnel": "Analysis funnel (last 30 days)",
+    "funnelSignup": "Sign-ups",
+    "funnelTime": "Birth time given",
+    "funnelMbti": "MBTI",
+    "funnelPalm": "Palm"
+  },
+  "shareCard": {
+    "fortune": "Today's Fortune",
+    "diary": "Today's Line",
+    "footer": "YEON · Every way of reading yourself"
   }
 }

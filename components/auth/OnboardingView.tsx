@@ -78,7 +78,7 @@ export function OnboardingView() {
   }
 
   return (
-    <div className="flex flex-col gap-5 pt-4">
+    <div className="mx-auto w-full max-w-md flex flex-col gap-5 pt-4">
       <div>
         <p className="text-xs text-muted">{t("stepOf", { step: step + 1, total: steps.length })}</p>
         <div className="mt-2">

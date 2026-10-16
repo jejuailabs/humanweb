@@ -12,6 +12,7 @@ import { ScoreRing } from "@/components/ui/ScoreRing";
 import { OrnamentDivider } from "@/components/ui/SectionTitle";
 import { SEGMENTED_WRAP, segmentedItem } from "@/components/ui/segmented";
 import { localDateKey, shiftDate, useApi } from "@/lib/client/api";
+import { shareCard } from "@/lib/client/share";
 import type { DailyResponse, Me } from "@/lib/client/types";
 
 // 언어권별 기본 탭 순서 (07_I18N_THEME.md)
@@ -44,11 +45,7 @@ function TodayInner({ me }: { me: Me }) {
 
   async function share() {
     if (!personal) return;
-    const text = t("shareText", { score: personal.scores.total, summary: personal.summary });
-    try {
-      if (navigator.share) await navigator.share({ title: "YEON", text, url: location.origin });
-      else await navigator.clipboard.writeText(`${text} ${location.origin}`);
-    } catch {}
+    await shareCard({ kind: "fortune", lang: locale, date, text: personal.summary, score: personal.scores.total }).catch(() => {});
   }
 
   return (

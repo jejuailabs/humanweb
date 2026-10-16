@@ -1,7 +1,7 @@
 "use client";
 
-import { Globe, Lock, Trash2 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { Globe, Lock, Share2, Trash2 } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { mutate } from "swr";
 import { BUTTON_CLASS } from "@/components/ui/Button";
@@ -9,6 +9,7 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { SEGMENTED_WRAP, segmentedItem } from "@/components/ui/segmented";
 import { api, useApi } from "@/lib/client/api";
+import { shareCard } from "@/lib/client/share";
 import { track } from "@/lib/firebase/client";
 import type { DiaryEntry } from "@/lib/client/types";
 
@@ -33,6 +34,7 @@ function Composer({ date, isToday, entry, defaultPublic }: { date: string; isTod
   const t = useTranslations("pages.diary");
   const tm = useTranslations("moods");
   const tc = useTranslations("common");
+  const locale = useLocale();
   const [text, setText] = useState(entry?.text ?? "");
   const [mood, setMood] = useState<Mood | null>((entry?.mood as Mood) ?? null);
   const [visibility, setVisibility] = useState<"private" | "public">(entry?.visibility ?? (defaultPublic ? "public" : "private"));
@@ -65,9 +67,14 @@ function Composer({ date, isToday, entry, defaultPublic }: { date: string; isTod
       <SectionTitle
         action={
           entry && (
-            <button type="button" onClick={remove} aria-label={tc("delete")} className="text-muted hover:text-danger">
-              <Trash2 className="size-4" aria-hidden />
-            </button>
+            <span className="flex items-center gap-3">
+              <button type="button" onClick={() => shareCard({ kind: "diary", lang: locale, date, text: entry.text }).catch(() => {})} aria-label={t("shareCard")} className="text-muted hover:text-gold">
+                <Share2 className="size-4" aria-hidden />
+              </button>
+              <button type="button" onClick={remove} aria-label={tc("delete")} className="text-muted hover:text-danger">
+                <Trash2 className="size-4" aria-hidden />
+              </button>
+            </span>
           )
         }
       >

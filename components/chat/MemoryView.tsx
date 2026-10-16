@@ -12,7 +12,7 @@ import { api, useApi } from "@/lib/client/api";
 export function MemoryView() {
   const t = useTranslations("pages.memory");
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 lg:mx-auto lg:w-full lg:max-w-2xl">
       <BackHeader href="/chat" title={t("title")} />
       <Gate>{() => <MemoryInner />}</Gate>
     </div>

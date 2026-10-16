@@ -191,7 +191,14 @@
       "heart": "공감",
       "fortuneOfDay": "그날의 운세 {score}점",
       "monthPrev": "이전 달",
-      "monthNext": "다음 달"
+      "monthNext": "다음 달",
+      "shareCard": "카드로 공유",
+      "onThisDay": "{years}년 전 오늘",
+      "retroTitle": "{month} 회고",
+      "retroMake": "이 달의 회고 만들기",
+      "retroNeedConsent": "설정에서 'AI에 일기 사용'을 허용하면 월간 회고를 만들 수 있어요",
+      "retroNeedEntries": "일기가 3개 이상 있어야 회고를 만들 수 있어요",
+      "retroMaking": "회고를 쓰고 있어요"
     },
     "analyze": {
       "title": "나를 알아가기",
@@ -535,6 +542,16 @@
     "hide": "숨김",
     "restore": "복구",
     "noReports": "대기 중인 신고가 없어요",
-    "aiUsage": "AI 호출"
+    "aiUsage": "AI 호출",
+    "funnel": "분석 퍼널 (최근 30일)",
+    "funnelSignup": "가입",
+    "funnelTime": "태어난 시간 입력",
+    "funnelMbti": "MBTI",
+    "funnelPalm": "손금"
+  },
+  "shareCard": {
+    "fortune": "오늘의 운세",
+    "diary": "오늘의 한 줄",
+    "footer": "YEON · 나를 해석하는 모든 체계"
   }
 }

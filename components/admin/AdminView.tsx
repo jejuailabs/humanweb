@@ -13,7 +13,10 @@ type Summary = {
   metrics: Record<string, number | string>[];
   content: Record<string, Record<string, string>>;
   reports: { id: string; targetId: string; reason: string; text: string }[];
+  funnel: { key: string; count: number }[];
 };
+
+const FUNNEL_LABEL: Record<string, string> = { signup: "funnelSignup", signup_time_known: "funnelTime", analysis_mbti: "funnelMbti", analysis_palm: "funnelPalm" };
 
 const METRIC_KEYS = ["signup", "diary_private", "diary_public", "analysis_mbti", "analysis_palm", "ai_daily", "ai_report", "ai_chat", "ai_palm"];
 
@@ -53,6 +56,24 @@ function AdminInner() {
         <GlassCard className="text-center"><p className="text-xs text-muted">{t("users")}</p><p className="font-display text-3xl text-gold">{data.totals.users}</p></GlassCard>
         <GlassCard className="text-center"><p className="text-xs text-muted">{t("publicDiary")}</p><p className="font-display text-3xl text-gold">{data.totals.publicDiary}</p></GlassCard>
       </div>
+
+      <GlassCard>
+        <SectionTitle>{t("funnel")}</SectionTitle>
+        <div className="flex flex-col gap-2">
+          {data.funnel.map((f) => {
+            const top = Math.max(1, data.funnel[0]?.count ?? 1);
+            return (
+              <div key={f.key} className="flex items-center gap-3 text-xs">
+                <span className="w-28 shrink-0 text-muted">{t(FUNNEL_LABEL[f.key])}</span>
+                <span className="h-2 flex-1 overflow-hidden rounded-full bg-track">
+                  <span className="block h-full rounded-full bg-gradient-to-r from-primary to-gold" style={{ width: `${Math.min(100, (f.count / top) * 100)}%` }} />
+                </span>
+                <span className="w-16 text-right text-text">{f.count} ({Math.round((f.count / top) * 100)}%)</span>
+              </div>
+            );
+          })}
+        </div>
+      </GlassCard>
 
       <GlassCard className="overflow-x-auto">
         <SectionTitle>{t("metrics")}</SectionTitle>

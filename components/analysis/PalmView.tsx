@@ -31,7 +31,7 @@ async function shrink(file: File): Promise<Blob> {
 export function PalmView() {
   const t = useTranslations("analyses");
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 lg:mx-auto lg:w-full lg:max-w-2xl">
       <BackHeader href="/analyze" title={t("palm.title")} />
       <Gate>{(me) => <PalmInner me={me} />}</Gate>
     </div>

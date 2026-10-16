@@ -20,7 +20,7 @@ const INPUT = "w-full rounded-xl border border-border bg-surface px-3 py-2 text-
 export function MeView() {
   const t = useTranslations("pages.me");
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 lg:block lg:columns-2 lg:gap-6 lg:[&>*]:mb-6 lg:[&>*]:break-inside-avoid">
       <Gate>{(me) => <MeInner me={me} />}</Gate>
       {/* 테마·언어는 로그인 없이도 */}
       <GlassCard className="flex flex-col gap-5">

@@ -21,7 +21,7 @@ type Axes = { E: number; N: number; T: number; J: number };
 export function MbtiView() {
   const t = useTranslations("analyses");
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5 lg:mx-auto lg:w-full lg:max-w-2xl">
       <BackHeader href="/analyze" title={t("mbti.title")} />
       <Gate>{(me) => <MbtiInner me={me} />}</Gate>
     </div>

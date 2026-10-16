@@ -13,7 +13,7 @@ const reportSchema = z.object({
   workStyle: z.string().min(10),
   relationStyle: z.string().min(10),
   goodMatch: z.string().min(5),
-  crossInsights: z.array(z.string().min(10)).min(1).max(4),
+  crossInsights: z.array(z.string().min(10)).min(1).max(8), // 모델이 넘치게 쓰는 경우가 있어 받고 4개로 자른다
 });
 
 // 절대 규칙 9: AI에는 요약값만 — 생년월일 원본·실명·사진 제외
@@ -62,7 +62,7 @@ Write the report:
   await userRef(uid)
     .collection("reports")
     .doc(String(version).padStart(4, "0"))
-    .set({ ...report, version, lang, completeness: u.stats.completeness, createdAt: FieldValue.serverTimestamp() });
+    .set({ ...report, crossInsights: report.crossInsights.slice(0, 4), version, lang, completeness: u.stats.completeness, createdAt: FieldValue.serverTimestamp() });
   await userRef(uid).set({ reportStale: false, reportTitle: report.title }, { merge: true });
   await syncPublicProfile(uid);
   return report;
