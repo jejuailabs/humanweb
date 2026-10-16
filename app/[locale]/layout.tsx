@@ -4,6 +4,7 @@ import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { locale as rootLocale } from "next/root-params";
 import { routing } from "@/i18n/routing";
+import { AuthProvider } from "@/lib/client/auth";
 import { themeInitScript } from "@/lib/theme";
 import "../globals.css";
 
@@ -39,7 +40,9 @@ export default async function LocaleLayout({ children }: LayoutProps<"/[locale]"
       </head>
       <body className="min-h-full">
         <div className="starfield" aria-hidden />
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <AuthProvider>{children}</AuthProvider>
+        </NextIntlClientProvider>
       </body>
     </html>
   );

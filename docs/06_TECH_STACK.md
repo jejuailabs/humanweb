@@ -8,14 +8,14 @@
 | 인증 | Firebase Auth | 구글·애플 기본, 카카오는 커스텀 토큰 `[확인 필요]` |
 | DB | Cloud Firestore | 공개/비공개 문서 분리 |
 | 파일 | Firebase Storage | 손금 사진 (본인만, 분석 후 삭제 기본) |
-| 서버 로직 | Cloud Functions (2세대) | 스케줄러, 트리거, AI 호출 |
-| AI | Gemini (Firebase AI Logic / Vertex AI) 또는 Claude·GPT API | 모델 선정 `[미정]`. 어떤 경우든 서버에서 호출 |
+| 서버 로직 | Vercel API Route (`app/api/**`) + Vercel Cron | 2026-10-16 결정: Cloud Functions 대신 API 라우트에서 트리거 역할까지 처리 (onDiaryWrite·onAnalysisWrite 등은 해당 API 안에서 실행). 매일 00:00 KST `/api/cron/daily` |
+| AI | OpenAI `gpt-5.6-luna` (2026-10-16 사용자 확정) | 서버에서만 호출 (`lib/server/ai.ts`). 모델은 `OPENAI_MODEL` 환경변수로 교체 가능 |
 | 다국어 | next-intl | |
 | 스타일 | Tailwind CSS + CSS 변수 토큰 | `07_I18N_THEME.md` |
 | 차트 | Recharts (레이더) | |
 | 네트워크 그래프 | react-force-graph 또는 sigma.js (WebGL) | 선정 `[미정]` |
 | 분석 | GA4 (+ BigQuery 연동 `[나중에]`) | |
-| 만세력 | 라이브러리 선정 `[확인 필요]` | 정확도 검증 필수 (테스트 케이스: 절기 경계일, 윤달, 자시) |
+| 만세력 | lunar-javascript 1.7.7 | `lib/saju` 정답표 테스트 통과 (절기 경계·입춘·윤달·자시 23시) — `npm test` |
 
 ## 폴더 구조
 ```

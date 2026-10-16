@@ -24,7 +24,23 @@
     "back": "뒤로",
     "unknown": "—",
     "start": "시작하기",
-    "open": "열기"
+    "open": "열기",
+    "loading": "불러오는 중",
+    "error": "잠시 문제가 생겼어요. 조금 뒤에 다시 시도해 주세요.",
+    "save": "저장",
+    "saved": "저장했어요",
+    "cancel": "취소",
+    "delete": "삭제",
+    "confirm": "확인",
+    "next": "다음",
+    "prev": "이전",
+    "done": "완료",
+    "retry": "다시 시도",
+    "comingSoon": "준비 중",
+    "edit": "수정",
+    "close": "닫기",
+    "yes": "예",
+    "no": "아니요"
   },
   "stats": {
     "leadership": "리더십",
@@ -45,13 +61,34 @@
     "blood": "혈액형"
   },
   "analyses": {
-    "mbti": { "title": "성격 유형", "desc": "나의 진짜 모습을 알아봐요" },
-    "saju": { "title": "사주", "desc": "타고난 다섯 기운의 흐름" },
-    "palm": { "title": "손금", "desc": "손바닥에 새겨진 이야기" },
-    "zodiacBlood": { "title": "별자리·혈액형", "desc": "가입 정보로 바로 열려요" },
-    "tojeong": { "title": "토정비결", "desc": "올해의 달별 흐름" },
-    "face": { "title": "관상", "desc": "얼굴에 담긴 나의 결" },
-    "name": { "title": "이름 풀이", "desc": "이름에 담긴 의미" },
+    "mbti": {
+      "title": "성격 유형",
+      "desc": "나의 진짜 모습을 알아봐요"
+    },
+    "saju": {
+      "title": "사주",
+      "desc": "타고난 다섯 기운의 흐름"
+    },
+    "palm": {
+      "title": "손금",
+      "desc": "손바닥에 새겨진 이야기"
+    },
+    "zodiacBlood": {
+      "title": "별자리·혈액형",
+      "desc": "가입 정보로 바로 열려요"
+    },
+    "tojeong": {
+      "title": "토정비결",
+      "desc": "올해의 달별 흐름"
+    },
+    "face": {
+      "title": "관상",
+      "desc": "얼굴에 담긴 나의 결"
+    },
+    "name": {
+      "title": "이름 풀이",
+      "desc": "이름에 담긴 의미"
+    },
     "status": {
       "completed": "완료",
       "available": "시작하기",
@@ -82,7 +119,11 @@
       "profileTitle": "프로필 완성도",
       "profileProgress": "{done}/{total} 완료",
       "profileHint": "더 많은 나를 알아보세요",
-      "chatCta": "AI와 이야기하기"
+      "chatCta": "AI와 이야기하기",
+      "titleFallback": "나를 알아가는 중",
+      "reportOpen": "보고서 전문 보기",
+      "reportMaking": "보고서를 만들고 있어요. 잠시 후 다시 확인해 주세요.",
+      "boost": "오늘 {stat} {delta}"
     },
     "today": {
       "title": "오늘의 나는 어떤가",
@@ -106,7 +147,18 @@
       "work": "업무",
       "tojeongTitle": "이번 달 토정비결",
       "tojeongDesc": "음력 생년월일로 한 해의 흐름을 봐요",
-      "share": "공유"
+      "share": "공유",
+      "lunarDate": "음력 {month}월 {day}일",
+      "lunarLeap": "음력 윤{month}월 {day}일",
+      "pillar": "{ganzhi}일",
+      "generating": "오늘의 운세를 준비하고 있어요",
+      "boostTitle": "오늘의 스탯 보정",
+      "noMbti": "MBTI 분석을 하면 열려요",
+      "tojeongSoon": "토정비결은 계산 기준 문헌을 확인한 뒤 열릴 예정이에요.",
+      "diaryTitle": "오늘의 한 줄",
+      "diaryOpen": "한 줄 남기기",
+      "shareText": "오늘 나의 운세는 {score}점! {summary}",
+      "today": "오늘"
     },
     "diary": {
       "title": "한 줄 일기장",
@@ -125,12 +177,27 @@
       "save": "남기기",
       "loginRequired": "로그인하면 기록할 수 있어요",
       "viewCalendar": "달력",
-      "viewList": "목록"
+      "viewList": "목록",
+      "explore": "둘러보기",
+      "mine": "내 일기",
+      "saveDone": "오늘의 한 줄을 남겼어요",
+      "publicNotice": "닉네임과 함께 다른 사람에게 보여요",
+      "deleteConfirm": "이 일기를 삭제할까요? 공개 사본도 함께 사라져요.",
+      "empty": "아직 남긴 한 줄이 없어요",
+      "exploreEmpty": "오늘 공개된 한 줄이 아직 없어요",
+      "allLangs": "모든 언어 보기",
+      "report": "신고",
+      "reportDone": "신고가 접수됐어요",
+      "heart": "공감",
+      "fortuneOfDay": "그날의 운세 {score}점",
+      "monthPrev": "이전 달",
+      "monthNext": "다음 달"
     },
     "analyze": {
       "title": "나를 알아가기",
       "description": "여러 체계로 나를 비춰봐요",
-      "progress": "{total}단계 중 {done}단계 완료"
+      "progress": "{total}단계 중 {done}단계 완료",
+      "basis": "계산 기준"
     },
     "map": {
       "title": "인연 지도",
@@ -141,13 +208,43 @@
       "filterSchool": "학교",
       "filterSimilar": "나와 비슷한",
       "me": "나",
-      "empty": "분석을 마치면 나와 닮은 사람들이 이 지도에 나타나요"
+      "empty": "분석을 마치면 나와 닮은 사람들이 이 지도에 나타나요",
+      "optInTitle": "지도에 나를 표시할까요?",
+      "optInDesc": "공개를 켜면 닉네임과 성향 지표, 공개로 고른 항목만 다른 사람에게 보여요.",
+      "optInCta": "설정에서 공개하기",
+      "needAnalysis": "분석을 하나 이상 마치면 지도가 열려요",
+      "score": "연결 점수 {score}",
+      "reasonBusiness": "같은 업종: {value}",
+      "reasonRegion": "같은 지역: {value}",
+      "reasonSchool": "같은 학교: {value}",
+      "reasonStats": "비슷한 성향",
+      "fate": "특별한 인연",
+      "connectSoon": "연결 요청은 준비 중이에요"
     },
     "me": {
       "title": "나",
       "description": "프로필과 설정",
       "chatEntry": "AI와 이야기하기",
-      "settingsTitle": "설정"
+      "settingsTitle": "설정",
+      "profileTitle": "프로필",
+      "nickname": "닉네임",
+      "birth": "생년월일",
+      "privacyTitle": "공개 범위",
+      "showOnMap": "인연 지도에 나를 표시",
+      "business": "업종",
+      "region": "지역",
+      "school": "학교",
+      "publicToggle": "공개",
+      "diaryTitle": "일기",
+      "diaryDefaultPublic": "새 일기를 기본으로 공개",
+      "diaryForAI": "AI 대화·보고서에 일기 사용 허용",
+      "aiTitle": "AI",
+      "memory": "AI 기억 보기·삭제",
+      "report": "AI 종합 보고서",
+      "account": "계정",
+      "deleteAccount": "계정 탈퇴",
+      "deleteConfirm": "모든 기록이 삭제되고 되돌릴 수 없어요. 탈퇴할까요?",
+      "streak": "연속 출석 {count}일"
     },
     "chat": {
       "title": "나를 아는 YEON",
@@ -161,7 +258,34 @@
       "q1": "요즘 나에게 맞는 일은?",
       "q2": "오늘 어떻게 보내면 좋을까?",
       "inputPlaceholder": "무엇이든 물어보세요",
-      "send": "보내기"
+      "send": "보내기",
+      "remaining": "오늘 남은 대화 {count}회",
+      "limitReached": "오늘 대화를 모두 사용했어요. 내일 다시 이야기해요.",
+      "memoryLink": "AI 기억 보기",
+      "thinking": "생각하고 있어요",
+      "ctxDiary": "일기"
+    },
+    "memory": {
+      "title": "AI 기억",
+      "desc": "대화 중에 YEON이 기억해 둔 것들이에요. 지우면 다음 대화부터 반영되지 않아요.",
+      "empty": "아직 기억한 것이 없어요",
+      "deleteAll": "전체 삭제",
+      "deleteAllConfirm": "모든 기억을 삭제할까요?"
+    },
+    "report": {
+      "title": "AI 종합 보고서",
+      "identity": "핵심 정체성",
+      "strengths": "강점",
+      "growth": "이렇게 하면 더 빛나요",
+      "workStyle": "일하는 방식",
+      "relationStyle": "관계 스타일",
+      "goodMatch": "잘 맞는 사람",
+      "crossInsights": "체계 간 일치와 차이",
+      "versions": "이전 버전",
+      "version": "버전 {version} · 신뢰도 {completeness}%",
+      "regenerate": "다시 만들기",
+      "generating": "보고서를 만들고 있어요 (30초 정도 걸려요)",
+      "empty": "아직 보고서가 없어요"
     }
   },
   "settings": {
@@ -170,5 +294,247 @@
     "themeLight": "라이트",
     "themeDark": "다크",
     "language": "언어"
+  },
+  "auth": {
+    "login": "로그인",
+    "logout": "로그아웃",
+    "google": "Google로 계속하기",
+    "apple": "Apple로 계속하기",
+    "kakao": "카카오로 계속하기",
+    "loginTitle": "나를 알아가는 여정",
+    "loginDesc": "나를 해석하는 모든 체계를 한곳에서 만나 보세요.",
+    "needLogin": "로그인하면 나만의 운세와 분석이 열려요",
+    "needOnboarding": "몇 가지만 알려주시면 오늘의 운세가 준비돼요",
+    "startOnboarding": "시작하기",
+    "loginFailed": "로그인하지 못했어요. 다시 시도해 주세요.",
+    "disclaimer": "YEON의 운세와 분석은 재미와 자기 탐색을 위한 것이며, 예언이나 과학적 진단이 아니에요."
+  },
+  "onboarding": {
+    "title": "반가워요",
+    "stepOf": "{total}단계 중 {step}",
+    "nickname": "어떻게 불러 드릴까요?",
+    "nicknamePlaceholder": "닉네임 (20자 이내)",
+    "birth": "생년월일을 알려주세요",
+    "solar": "양력",
+    "lunar": "음력",
+    "leapMonth": "윤달",
+    "blood": "혈액형을 알려주세요",
+    "time": "태어난 시간을 알고 있나요?",
+    "timeHint": "사주의 시주를 계산하는 데 써요. 몰라도 괜찮아요.",
+    "timeUnknown": "모름",
+    "gender": "성별 (선택)",
+    "female": "여성",
+    "male": "남성",
+    "other": "선택 안 함",
+    "privacy": "생년월일과 태어난 시간은 나만 볼 수 있고, AI에는 원본이 전달되지 않아요.",
+    "finish": "오늘의 운세 보기",
+    "ready": "벌써 오늘의 운세가 준비됐어요",
+    "invalidDate": "날짜를 다시 확인해 주세요"
+  },
+  "zodiac": {
+    "aries": "양자리",
+    "taurus": "황소자리",
+    "gemini": "쌍둥이자리",
+    "cancer": "게자리",
+    "leo": "사자자리",
+    "virgo": "처녀자리",
+    "libra": "천칭자리",
+    "scorpio": "전갈자리",
+    "sagittarius": "사수자리",
+    "capricorn": "염소자리",
+    "aquarius": "물병자리",
+    "pisces": "물고기자리"
+  },
+  "zodiacElement": {
+    "fire": "불",
+    "earth": "흙",
+    "air": "공기",
+    "water": "물"
+  },
+  "animals": {
+    "rat": "쥐띠",
+    "ox": "소띠",
+    "tiger": "호랑이띠",
+    "rabbit": "토끼띠",
+    "dragon": "용띠",
+    "snake": "뱀띠",
+    "horse": "말띠",
+    "goat": "양띠",
+    "monkey": "원숭이띠",
+    "rooster": "닭띠",
+    "dog": "개띠",
+    "pig": "돼지띠"
+  },
+  "blood": {
+    "A": "A형",
+    "B": "B형",
+    "O": "O형",
+    "AB": "AB형"
+  },
+  "stems": {
+    "甲": "갑목",
+    "乙": "을목",
+    "丙": "병화",
+    "丁": "정화",
+    "戊": "무토",
+    "己": "기토",
+    "庚": "경금",
+    "辛": "신금",
+    "壬": "임수",
+    "癸": "계수"
+  },
+  "tenGods": {
+    "peer": "비겁",
+    "output": "식상",
+    "wealth": "재성",
+    "officer": "관성",
+    "resource": "인성"
+  },
+  "lucky": {
+    "colors": {
+      "teal": "청록",
+      "gold": "금색",
+      "violet": "보라",
+      "navy": "남색",
+      "coral": "산호색",
+      "ivory": "아이보리",
+      "green": "초록",
+      "rose": "장미색",
+      "silver": "은색",
+      "amber": "호박색"
+    },
+    "directions": {
+      "east": "동쪽",
+      "west": "서쪽",
+      "south": "남쪽",
+      "north": "북쪽",
+      "northeast": "북동쪽",
+      "northwest": "북서쪽",
+      "southeast": "남동쪽",
+      "southwest": "남서쪽"
+    },
+    "items": {
+      "watch": "손목시계",
+      "notebook": "노트",
+      "scarf": "스카프",
+      "ring": "반지",
+      "tea": "따뜻한 차",
+      "book": "책",
+      "headphones": "헤드폰",
+      "umbrella": "우산",
+      "candle": "향초",
+      "plant": "작은 화분",
+      "pen": "만년필",
+      "mirror": "손거울",
+      "bracelet": "팔찌",
+      "perfume": "향수",
+      "coin": "동전",
+      "postcard": "엽서"
+    }
+  },
+  "moods": {
+    "great": "아주 좋음",
+    "good": "좋음",
+    "calm": "보통",
+    "low": "가라앉음",
+    "tired": "지침"
+  },
+  "analysisDetail": {
+    "mbti": {
+      "chooseTitle": "성격 유형 알아보기",
+      "takeTest": "20문항 검사하기",
+      "takeTestDesc": "3분 정도 걸려요",
+      "inputType": "유형을 알고 있어요",
+      "inputTypeDesc": "16가지 유형 중에서 골라요",
+      "scale1": "전혀 아니다",
+      "scale5": "매우 그렇다",
+      "question": "{total}문항 중 {n}",
+      "result": "나의 유형",
+      "axisE": "외향",
+      "axisI": "내향",
+      "axisN": "직관",
+      "axisS": "감각",
+      "axisT": "사고",
+      "axisF": "감정",
+      "axisJ": "판단",
+      "axisP": "인식",
+      "retake": "다시 하기",
+      "nameNote": "MBTI는 The Myers-Briggs Company의 상표예요. 이 검사는 YEON이 만든 간이 성향 검사예요."
+    },
+    "palm": {
+      "title": "손금 분석",
+      "guide": "손바닥을 펴고 손금이 잘 보이도록 밝은 곳에서 찍어 주세요.",
+      "privacy": "사진은 분석 후 바로 삭제돼요. 저장하지 않아요.",
+      "pick": "사진 찍기 / 고르기",
+      "analyzing": "손금을 읽고 있어요…",
+      "retake": "손바닥이 잘 보이지 않아요. 밝은 곳에서 다시 찍어 주세요.",
+      "tooLarge": "사진이 너무 커요 (4MB 이하)",
+      "result": "손금이 말해 주는 나",
+      "features": {
+        "headLine": "두뇌선",
+        "headCurve": "두뇌선 곡선",
+        "heartLine": "감정선",
+        "fateLine": "운명선",
+        "lifeLine": "생명선",
+        "sunLine": "태양선",
+        "fingerRatio": "손가락 비율"
+      }
+    },
+    "saju": {
+      "title": "나의 사주",
+      "pillars": "사주 팔자",
+      "year": "연주",
+      "month": "월주",
+      "day": "일주",
+      "time": "시주",
+      "timeUnknown": "모름",
+      "dayMaster": "일간 (나를 상징)",
+      "elements": "오행 분포",
+      "tenGods": "십신 분포",
+      "basisNote": "계산 기준: 절기 기준 월주, 입춘 기준 연주, 자시는 23시부터 다음 날로 봐요. 출생지의 진태양시 보정은 하지 않아요."
+    },
+    "zodiac": {
+      "title": "별자리·혈액형",
+      "sign": "나의 별자리",
+      "element": "원소: {element}",
+      "bloodTitle": "나의 혈액형",
+      "bloodNote": "혈액형 성격론은 과학적 근거가 없어요. 재미로만 봐 주세요."
+    }
+  },
+  "mbtiTest": {
+    "q1": "사람들과 어울리고 나면 에너지가 채워진다.",
+    "q2": "혼자 보내는 조용한 시간이 꼭 필요하다.",
+    "q3": "처음 만난 사람에게도 먼저 말을 거는 편이다.",
+    "q4": "생각을 충분히 정리한 뒤에 말하는 편이다.",
+    "q5": "여러 사람이 모이는 자리가 즐겁다.",
+    "q6": "눈앞의 사실보다 그 뒤에 숨은 의미가 궁금하다.",
+    "q7": "검증된 방법을 그대로 따르는 것이 편하다.",
+    "q8": "미래의 가능성을 상상하는 것을 좋아한다.",
+    "q9": "구체적인 예시가 있어야 이해가 잘 된다.",
+    "q10": "새로운 아이디어가 자주 떠오른다.",
+    "q11": "결정할 때 감정보다 논리를 먼저 본다.",
+    "q12": "다른 사람의 기분이 결정에 큰 영향을 준다.",
+    "q13": "공정함이 배려보다 중요할 때가 많다.",
+    "q14": "누군가 힘들어하면 해결책보다 공감이 먼저다.",
+    "q15": "비판을 들어도 감정이 크게 흔들리지 않는다.",
+    "q16": "계획을 세우고 그대로 지킬 때 마음이 편하다.",
+    "q17": "상황에 따라 즉흥적으로 움직이는 게 좋다.",
+    "q18": "마감보다 일찍 일을 끝내 두는 편이다.",
+    "q19": "선택지를 열어 두는 것이 좋다.",
+    "q20": "물건이 제자리에 있어야 마음이 놓인다."
+  },
+  "admin": {
+    "title": "어드민",
+    "forbidden": "어드민 권한이 필요해요",
+    "users": "전체 사용자",
+    "publicDiary": "공개 일기",
+    "metrics": "최근 7일 지표",
+    "content": "데일리 콘텐츠 상태",
+    "regenerate": "재생성",
+    "reports": "신고 대기",
+    "hide": "숨김",
+    "restore": "복구",
+    "noReports": "대기 중인 신고가 없어요",
+    "aiUsage": "AI 호출"
   }
 }

@@ -24,7 +24,23 @@
     "back": "Back",
     "unknown": "—",
     "start": "Start",
-    "open": "Open"
+    "open": "Open",
+    "loading": "Loading",
+    "error": "Something went wrong. Please try again in a moment.",
+    "save": "Save",
+    "saved": "Saved",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "confirm": "OK",
+    "next": "Next",
+    "prev": "Back",
+    "done": "Done",
+    "retry": "Try again",
+    "comingSoon": "Coming soon",
+    "edit": "Edit",
+    "close": "Close",
+    "yes": "Yes",
+    "no": "No"
   },
   "stats": {
     "leadership": "Leadership",
@@ -45,13 +61,34 @@
     "blood": "Blood Type"
   },
   "analyses": {
-    "mbti": { "title": "Personality Type", "desc": "Explore your true self" },
-    "saju": { "title": "Saju Four Pillars", "desc": "Your rhythm in five elements" },
-    "palm": { "title": "Palm Reading", "desc": "Your hands tell another story" },
-    "zodiacBlood": { "title": "Star Sign & Blood Type", "desc": "Opens right away from sign-up" },
-    "tojeong": { "title": "Tojeong Fortune", "desc": "Your year, month by month" },
-    "face": { "title": "Face Reading", "desc": "What your face reveals" },
-    "name": { "title": "Name Reading", "desc": "The meaning in your name" },
+    "mbti": {
+      "title": "Personality Type",
+      "desc": "Explore your true self"
+    },
+    "saju": {
+      "title": "Saju Four Pillars",
+      "desc": "Your rhythm in five elements"
+    },
+    "palm": {
+      "title": "Palm Reading",
+      "desc": "Your hands tell another story"
+    },
+    "zodiacBlood": {
+      "title": "Star Sign & Blood Type",
+      "desc": "Opens right away from sign-up"
+    },
+    "tojeong": {
+      "title": "Tojeong Fortune",
+      "desc": "Your year, month by month"
+    },
+    "face": {
+      "title": "Face Reading",
+      "desc": "What your face reveals"
+    },
+    "name": {
+      "title": "Name Reading",
+      "desc": "The meaning in your name"
+    },
     "status": {
       "completed": "Completed",
       "available": "Start",
@@ -72,7 +109,7 @@
       "guestTitle": "The start of knowing yourself",
       "summaryTitle": "Today's Fortune",
       "summaryLocked": "Add your birth date to open today's fortune",
-      "streak": "{count} days",
+      "streak": "{count}-day streak",
       "mapTitle": "My Personality Map",
       "completeness": "Confidence {value}%",
       "mapLocked": "The map grows clearer with every analysis",
@@ -82,7 +119,11 @@
       "profileTitle": "Profile completion",
       "profileProgress": "{done}/{total} complete",
       "profileHint": "Unlock more insights about yourself",
-      "chatCta": "Talk with AI"
+      "chatCta": "Talk with AI",
+      "titleFallback": "Getting to know myself",
+      "reportOpen": "Read the full report",
+      "reportMaking": "Your report is being written. Check back in a moment.",
+      "boost": "Today {stat} {delta}"
     },
     "today": {
       "title": "How am I today?",
@@ -106,7 +147,18 @@
       "work": "Work",
       "tojeongTitle": "This Month's Annual Fortune",
       "tojeongDesc": "See your year's flow from your lunar birth date",
-      "share": "Share"
+      "share": "Share",
+      "lunarDate": "Lunar {month}/{day}",
+      "lunarLeap": "Lunar leap {month}/{day}",
+      "pillar": "{ganzhi} day",
+      "generating": "Preparing today's fortune",
+      "boostTitle": "Today's stat boost",
+      "noMbti": "Opens after your MBTI analysis",
+      "tojeongSoon": "Tojeong fortune will open once its calculation source is verified.",
+      "diaryTitle": "Today's line",
+      "diaryOpen": "Leave a line",
+      "shareText": "My fortune today: {score}! {summary}",
+      "today": "Today"
     },
     "diary": {
       "title": "One-line Diary",
@@ -125,12 +177,27 @@
       "save": "Save",
       "loginRequired": "Sign in to keep your diary",
       "viewCalendar": "Calendar",
-      "viewList": "List"
+      "viewList": "List",
+      "explore": "Explore",
+      "mine": "My diary",
+      "saveDone": "Today's line is saved",
+      "publicNotice": "Shown to others with your nickname",
+      "deleteConfirm": "Delete this entry? Its public copy will be removed too.",
+      "empty": "No lines yet",
+      "exploreEmpty": "No public lines for this day yet",
+      "allLangs": "Show all languages",
+      "report": "Report",
+      "reportDone": "Report received",
+      "heart": "Heart",
+      "fortuneOfDay": "That day's fortune {score}",
+      "monthPrev": "Previous month",
+      "monthNext": "Next month"
     },
     "analyze": {
       "title": "Discover Yourself",
       "description": "See yourself through many lenses",
-      "progress": "{done} of {total} steps completed"
+      "progress": "{done} of {total} steps completed",
+      "basis": "Calculation basis"
     },
     "map": {
       "title": "Connection Map",
@@ -141,13 +208,43 @@
       "filterSchool": "School",
       "filterSimilar": "Similar to me",
       "me": "Me",
-      "empty": "Finish your analyses and people like you will appear on this map"
+      "empty": "Finish your analyses and people like you will appear on this map",
+      "optInTitle": "Show yourself on the map?",
+      "optInDesc": "When on, others see only your nickname, trait vector and the fields you made public.",
+      "optInCta": "Turn on in settings",
+      "needAnalysis": "Finish at least one analysis to open the map",
+      "score": "Connection score {score}",
+      "reasonBusiness": "Same field: {value}",
+      "reasonRegion": "Same region: {value}",
+      "reasonSchool": "Same school: {value}",
+      "reasonStats": "Similar traits",
+      "fate": "Special connection",
+      "connectSoon": "Connection requests are coming soon"
     },
     "me": {
       "title": "Me",
       "description": "Profile and settings",
       "chatEntry": "Talk with AI",
-      "settingsTitle": "Settings"
+      "settingsTitle": "Settings",
+      "profileTitle": "Profile",
+      "nickname": "Nickname",
+      "birth": "Birth date",
+      "privacyTitle": "Visibility",
+      "showOnMap": "Show me on the Connection Map",
+      "business": "Business field",
+      "region": "Region",
+      "school": "School",
+      "publicToggle": "Public",
+      "diaryTitle": "Diary",
+      "diaryDefaultPublic": "Make new entries public by default",
+      "diaryForAI": "Allow AI chat & report to use my diary",
+      "aiTitle": "AI",
+      "memory": "View & delete AI memory",
+      "report": "AI Overall Report",
+      "account": "Account",
+      "deleteAccount": "Delete account",
+      "deleteConfirm": "All your records will be deleted permanently. Delete your account?",
+      "streak": "{count}-day streak"
     },
     "chat": {
       "title": "YEON, who knows you",
@@ -161,7 +258,34 @@
       "q1": "What kind of work suits me lately?",
       "q2": "How should I spend today?",
       "inputPlaceholder": "Ask anything",
-      "send": "Send"
+      "send": "Send",
+      "remaining": "{count} chats left today",
+      "limitReached": "You've used today's chats. Let's talk again tomorrow.",
+      "memoryLink": "View AI memory",
+      "thinking": "Thinking",
+      "ctxDiary": "Diary"
+    },
+    "memory": {
+      "title": "AI Memory",
+      "desc": "Things YEON remembered from your chats. Deleted items won't be used from your next chat.",
+      "empty": "Nothing remembered yet",
+      "deleteAll": "Delete all",
+      "deleteAllConfirm": "Delete all memories?"
+    },
+    "report": {
+      "title": "AI Overall Report",
+      "identity": "Core identity",
+      "strengths": "Strengths",
+      "growth": "Where you shine even more",
+      "workStyle": "Work style",
+      "relationStyle": "Relationships",
+      "goodMatch": "Good match",
+      "crossInsights": "Where the systems agree and differ",
+      "versions": "Earlier versions",
+      "version": "Version {version} · Confidence {completeness}%",
+      "regenerate": "Regenerate",
+      "generating": "Writing your report (about 30 seconds)",
+      "empty": "No report yet"
     }
   },
   "settings": {
@@ -170,5 +294,247 @@
     "themeLight": "Light",
     "themeDark": "Dark",
     "language": "Language"
+  },
+  "auth": {
+    "login": "Sign in",
+    "logout": "Sign out",
+    "google": "Continue with Google",
+    "apple": "Continue with Apple",
+    "kakao": "Continue with Kakao",
+    "loginTitle": "A journey into yourself",
+    "loginDesc": "Every way of reading yourself, in one place.",
+    "needLogin": "Sign in to open your own fortune and analyses",
+    "needOnboarding": "Tell us a few things and today's fortune will be ready",
+    "startOnboarding": "Get started",
+    "loginFailed": "Couldn't sign you in. Please try again.",
+    "disclaimer": "YEON's fortunes and analyses are for fun and self-reflection — not predictions or scientific diagnoses."
+  },
+  "onboarding": {
+    "title": "Welcome",
+    "stepOf": "Step {step} of {total}",
+    "nickname": "What should we call you?",
+    "nicknamePlaceholder": "Nickname (up to 20 characters)",
+    "birth": "When were you born?",
+    "solar": "Solar",
+    "lunar": "Lunar",
+    "leapMonth": "Leap month",
+    "blood": "What's your blood type?",
+    "time": "Do you know your birth time?",
+    "timeHint": "Used for the hour pillar of your Saju. It's fine if you don't know.",
+    "timeUnknown": "I don't know",
+    "gender": "Gender (optional)",
+    "female": "Female",
+    "male": "Male",
+    "other": "Prefer not to say",
+    "privacy": "Only you can see your birth date and time. The raw values are never sent to AI.",
+    "finish": "See today's fortune",
+    "ready": "Today's fortune is already waiting for you",
+    "invalidDate": "Please check the date"
+  },
+  "zodiac": {
+    "aries": "Aries",
+    "taurus": "Taurus",
+    "gemini": "Gemini",
+    "cancer": "Cancer",
+    "leo": "Leo",
+    "virgo": "Virgo",
+    "libra": "Libra",
+    "scorpio": "Scorpio",
+    "sagittarius": "Sagittarius",
+    "capricorn": "Capricorn",
+    "aquarius": "Aquarius",
+    "pisces": "Pisces"
+  },
+  "zodiacElement": {
+    "fire": "Fire",
+    "earth": "Earth",
+    "air": "Air",
+    "water": "Water"
+  },
+  "animals": {
+    "rat": "Rat",
+    "ox": "Ox",
+    "tiger": "Tiger",
+    "rabbit": "Rabbit",
+    "dragon": "Dragon",
+    "snake": "Snake",
+    "horse": "Horse",
+    "goat": "Goat",
+    "monkey": "Monkey",
+    "rooster": "Rooster",
+    "dog": "Dog",
+    "pig": "Pig"
+  },
+  "blood": {
+    "A": "Type A",
+    "B": "Type B",
+    "O": "Type O",
+    "AB": "Type AB"
+  },
+  "stems": {
+    "甲": "Yang Wood",
+    "乙": "Yin Wood",
+    "丙": "Yang Fire",
+    "丁": "Yin Fire",
+    "戊": "Yang Earth",
+    "己": "Yin Earth",
+    "庚": "Yang Metal",
+    "辛": "Yin Metal",
+    "壬": "Yang Water",
+    "癸": "Yin Water"
+  },
+  "tenGods": {
+    "peer": "Peers",
+    "output": "Output",
+    "wealth": "Wealth",
+    "officer": "Authority",
+    "resource": "Resource"
+  },
+  "lucky": {
+    "colors": {
+      "teal": "Teal",
+      "gold": "Gold",
+      "violet": "Violet",
+      "navy": "Navy",
+      "coral": "Coral",
+      "ivory": "Ivory",
+      "green": "Green",
+      "rose": "Rose",
+      "silver": "Silver",
+      "amber": "Amber"
+    },
+    "directions": {
+      "east": "East",
+      "west": "West",
+      "south": "South",
+      "north": "North",
+      "northeast": "Northeast",
+      "northwest": "Northwest",
+      "southeast": "Southeast",
+      "southwest": "Southwest"
+    },
+    "items": {
+      "watch": "Wristwatch",
+      "notebook": "Notebook",
+      "scarf": "Scarf",
+      "ring": "Ring",
+      "tea": "Warm tea",
+      "book": "Book",
+      "headphones": "Headphones",
+      "umbrella": "Umbrella",
+      "candle": "Candle",
+      "plant": "Small plant",
+      "pen": "Fountain pen",
+      "mirror": "Hand mirror",
+      "bracelet": "Bracelet",
+      "perfume": "Perfume",
+      "coin": "Coin",
+      "postcard": "Postcard"
+    }
+  },
+  "moods": {
+    "great": "Great",
+    "good": "Good",
+    "calm": "Okay",
+    "low": "Low",
+    "tired": "Tired"
+  },
+  "analysisDetail": {
+    "mbti": {
+      "chooseTitle": "Find your personality type",
+      "takeTest": "Take the 20-question test",
+      "takeTestDesc": "About 3 minutes",
+      "inputType": "I know my type",
+      "inputTypeDesc": "Pick from the 16 types",
+      "scale1": "Strongly disagree",
+      "scale5": "Strongly agree",
+      "question": "{n} of {total}",
+      "result": "My type",
+      "axisE": "Extraverted",
+      "axisI": "Introverted",
+      "axisN": "Intuitive",
+      "axisS": "Sensing",
+      "axisT": "Thinking",
+      "axisF": "Feeling",
+      "axisJ": "Judging",
+      "axisP": "Perceiving",
+      "retake": "Retake",
+      "nameNote": "MBTI is a trademark of The Myers-Briggs Company. This is a short trait test made by YEON."
+    },
+    "palm": {
+      "title": "Palm Reading",
+      "guide": "Open your palm and take a photo in good light so the lines are visible.",
+      "privacy": "Your photo is deleted right after analysis. We never store it.",
+      "pick": "Take / choose a photo",
+      "analyzing": "Reading your palm…",
+      "retake": "We couldn't see your palm clearly. Please retake it in brighter light.",
+      "tooLarge": "The photo is too large (max 4MB)",
+      "result": "What your palm says",
+      "features": {
+        "headLine": "Head line",
+        "headCurve": "Head line curve",
+        "heartLine": "Heart line",
+        "fateLine": "Fate line",
+        "lifeLine": "Life line",
+        "sunLine": "Sun line",
+        "fingerRatio": "Finger ratio"
+      }
+    },
+    "saju": {
+      "title": "My Saju",
+      "pillars": "Four Pillars",
+      "year": "Year",
+      "month": "Month",
+      "day": "Day",
+      "time": "Hour",
+      "timeUnknown": "Unknown",
+      "dayMaster": "Day Master (you)",
+      "elements": "Five Elements",
+      "tenGods": "Ten Gods",
+      "basisNote": "Basis: month pillar by solar terms, year pillar by Ipchun, the Rat hour (from 23:00) counts as the next day. No true-solar-time correction for birthplace."
+    },
+    "zodiac": {
+      "title": "Star Sign & Blood Type",
+      "sign": "My star sign",
+      "element": "Element: {element}",
+      "bloodTitle": "My blood type",
+      "bloodNote": "Blood-type personality theory has no scientific basis. Enjoy it just for fun."
+    }
+  },
+  "mbtiTest": {
+    "q1": "Spending time with people recharges my energy.",
+    "q2": "I really need quiet time alone.",
+    "q3": "I usually start conversations with people I've just met.",
+    "q4": "I prefer to organize my thoughts before speaking.",
+    "q5": "I enjoy gatherings with many people.",
+    "q6": "I'm more curious about the meaning behind facts than the facts themselves.",
+    "q7": "I'm comfortable following proven methods as they are.",
+    "q8": "I love imagining future possibilities.",
+    "q9": "I understand things best with concrete examples.",
+    "q10": "New ideas come to me often.",
+    "q11": "When deciding, I look at logic before feelings.",
+    "q12": "Other people's feelings strongly affect my decisions.",
+    "q13": "Fairness often matters more than kindness.",
+    "q14": "When someone struggles, empathy comes before solutions.",
+    "q15": "Criticism doesn't shake me much emotionally.",
+    "q16": "I feel at ease when I make a plan and stick to it.",
+    "q17": "I like to act spontaneously depending on the situation.",
+    "q18": "I tend to finish work well before the deadline.",
+    "q19": "I like to keep my options open.",
+    "q20": "I feel settled when things are in their place."
+  },
+  "admin": {
+    "title": "Admin",
+    "forbidden": "Admin permission required",
+    "users": "Total users",
+    "publicDiary": "Public diary",
+    "metrics": "Last 7 days",
+    "content": "Daily content status",
+    "regenerate": "Regenerate",
+    "reports": "Open reports",
+    "hide": "Hide",
+    "restore": "Restore",
+    "noReports": "No open reports",
+    "aiUsage": "AI calls"
   }
 }
