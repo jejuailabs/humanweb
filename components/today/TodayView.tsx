@@ -80,9 +80,11 @@ function TodayInner({ me }: { me: Me }) {
           {t("generating")}
         </div>
       ) : (
-        <>
+        // 모바일: 한 줄 그대로 / PC: 왼쪽(점수 링·행운·보정, 스크롤 고정) + 오른쪽(카테고리·메시지·토정비결·일기)
+        <div className="contents lg:mt-8 lg:grid lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:items-start lg:gap-10">
+          <div className="contents lg:sticky lg:top-10 lg:flex lg:flex-col">
           {/* 총운 점수 링 */}
-          <section className="my-6 flex flex-col items-center">
+          <section className="my-6 flex flex-col items-center lg:mt-0">
             <ScoreRing size={240} caption={t("scoreCaption")} value={personal?.scores.total} />
             {personal && <p className="mt-3 max-w-72 text-center font-display text-lg text-text">{personal.summary}</p>}
           </section>
@@ -116,7 +118,12 @@ function TodayInner({ me }: { me: Me }) {
             </section>
           )}
 
-          <OrnamentDivider />
+          </div>
+
+          <div className="contents lg:flex lg:flex-col">
+          <div className="lg:hidden">
+            <OrnamentDivider />
+          </div>
 
           {/* 카테고리 탭 */}
           <nav aria-label={t("categoriesLabel")} className={`${SEGMENTED_WRAP} mb-4 grid-cols-5`}>
@@ -133,8 +140,8 @@ function TodayInner({ me }: { me: Me }) {
               <span className="text-[10px] tracking-[0.35em] text-on-image-muted uppercase">{t("messageLabel")}</span>
               {current ? (
                 <>
-                  <p className="max-w-[80%] font-display text-xl leading-snug">{current.summary}</p>
-                  <p className="text-sm leading-relaxed text-on-image-muted">{current.detail}</p>
+                  <p className="max-w-[80%] font-display text-xl leading-snug lg:max-w-[62%]">{current.summary}</p>
+                  <p className="text-sm leading-relaxed text-on-image-muted lg:max-w-[62%]">{current.detail}</p>
                 </>
               ) : (
                 <p className="max-w-[80%] font-display text-xl leading-snug">{t("noMbti")}</p>
@@ -168,7 +175,8 @@ function TodayInner({ me }: { me: Me }) {
             <Share2 className="size-4" aria-hidden />
             {t("share")}
           </button>
-        </>
+          </div>
+        </div>
       )}
     </div>
   );

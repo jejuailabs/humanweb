@@ -59,10 +59,12 @@ function HomeInner({ me }: { me?: Me }) {
 
   const status = (x: (typeof HOME_ANALYSES)[number]): AnalysisStatus => (x.done(me) ? "completed" : x.available && onboarded ? "available" : "locked");
 
+  // 모바일: 한 줄로 기존 순서 유지 / PC: 왼쪽(프로필·운세·보고서·완성도·대화) + 오른쪽(성향 지도·분석)
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2 lg:items-start lg:gap-8">
+      <div className="contents lg:flex lg:flex-col lg:gap-6">
       {/* 프로필 머리 */}
-      <section className="flex flex-col items-center pt-2 text-center">
+      <section className="order-1 flex flex-col items-center pt-2 text-center lg:order-none">
         <span className="relative flex size-28 items-center justify-center overflow-hidden rounded-full border-2 border-gold bg-surface shadow-[0_0_40px_-6px_var(--glow-gold)]">
           <UserRound className="size-12 text-muted" strokeWidth={1} aria-hidden />
         </span>
@@ -90,7 +92,7 @@ function HomeInner({ me }: { me?: Me }) {
       </section>
 
       {/* 오늘의 요약 카드 */}
-      <Link href="/today" className="block">
+      <Link href="/today" className="order-2 block lg:order-none">
         <ImageCard src="/assets/bg/home-fortune.webp" scrim="left" className="glass-violet">
           <div className="flex items-center gap-4 p-5">
             <ScoreRing size={92} showMax={false} value={personal?.scores.total} />
@@ -111,8 +113,42 @@ function HomeInner({ me }: { me?: Me }) {
         </ImageCard>
       </Link>
 
+      {/* AI 종합 보고서 */}
+      {me?.report ? (
+        <Link href="/report" className="order-5 block lg:order-none">
+          <GlassCard variant="gold">
+            <SectionTitle>{t("reportTitle")}</SectionTitle>
+            <p className="font-display text-lg text-gold">{me.report.title}</p>
+            <p className="mt-2 line-clamp-3 text-sm text-text">{me.report.identity}</p>
+            <span className="mt-3 flex items-center gap-1 text-xs text-muted">{t("reportOpen")} <ChevronRight className="size-3" /></span>
+          </GlassCard>
+        </Link>
+      ) : (
+        <GlassCard variant="locked" className="order-5 lg:order-none">
+          <SectionTitle>{t("reportTitle")}</SectionTitle>
+          <p className="text-sm text-muted">{onboarded ? t("reportMaking") : t("reportLocked")}</p>
+        </GlassCard>
+      )}
+
+      {/* 프로필 완성도 */}
+      <GlassCard className="order-6 flex flex-col gap-3 lg:order-none">
+        <div className="flex items-baseline justify-between">
+          <span className="font-display text-lg text-text">{t("profileTitle")}</span>
+          <span className="font-display text-gold">{t("profileProgress", { done: completedCount(me), total: 7 })}</span>
+        </div>
+        <ProgressBar value={completedCount(me)} max={7} label={t("profileTitle")} />
+        <span className="text-xs text-muted">{t("profileHint")}</span>
+      </GlassCard>
+
+      <Link href="/chat" className={`${BUTTON_CLASS.gold} order-7 w-full lg:order-none`}>
+        <MessageCircle className="size-5" aria-hidden />
+        {t("chatCta")}
+      </Link>
+      </div>
+
+      <div className="contents lg:flex lg:flex-col lg:gap-6">
       {/* 성향 지도 */}
-      <GlassCard>
+      <GlassCard className="order-3 lg:order-none">
         <SectionTitle action={<span className="text-xs text-muted">{t("completeness", { value: me?.stats?.completeness ?? 0 })}</span>}>
           {t("mapTitle")}
         </SectionTitle>
@@ -123,7 +159,7 @@ function HomeInner({ me }: { me?: Me }) {
       </GlassCard>
 
       {/* 분석 카드 3열 */}
-      <section>
+      <section className="order-4 lg:order-none">
         <SectionTitle>{t("analysesTitle")}</SectionTitle>
         <div className="grid grid-cols-3 gap-2.5">
           {HOME_ANALYSES.map((x) => {
@@ -148,37 +184,7 @@ function HomeInner({ me }: { me?: Me }) {
         </div>
       </section>
 
-      {/* AI 종합 보고서 */}
-      {me?.report ? (
-        <Link href="/report" className="block">
-          <GlassCard variant="gold">
-            <SectionTitle>{t("reportTitle")}</SectionTitle>
-            <p className="font-display text-lg text-gold">{me.report.title}</p>
-            <p className="mt-2 line-clamp-3 text-sm text-text">{me.report.identity}</p>
-            <span className="mt-3 flex items-center gap-1 text-xs text-muted">{t("reportOpen")} <ChevronRight className="size-3" /></span>
-          </GlassCard>
-        </Link>
-      ) : (
-        <GlassCard variant="locked">
-          <SectionTitle>{t("reportTitle")}</SectionTitle>
-          <p className="text-sm text-muted">{onboarded ? t("reportMaking") : t("reportLocked")}</p>
-        </GlassCard>
-      )}
-
-      {/* 프로필 완성도 */}
-      <GlassCard className="flex flex-col gap-3">
-        <div className="flex items-baseline justify-between">
-          <span className="font-display text-lg text-text">{t("profileTitle")}</span>
-          <span className="font-display text-gold">{t("profileProgress", { done: completedCount(me), total: 7 })}</span>
-        </div>
-        <ProgressBar value={completedCount(me)} max={7} label={t("profileTitle")} />
-        <span className="text-xs text-muted">{t("profileHint")}</span>
-      </GlassCard>
-
-      <Link href="/chat" className={`${BUTTON_CLASS.gold} w-full`}>
-        <MessageCircle className="size-5" aria-hidden />
-        {t("chatCta")}
-      </Link>
+      </div>
     </div>
   );
 }

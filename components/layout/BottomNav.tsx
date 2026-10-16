@@ -5,8 +5,8 @@ import { useTranslations } from "next-intl";
 import { Sparkle } from "@/components/ui/SectionTitle";
 import { Link, usePathname } from "@/i18n/navigation";
 
-// 02_SCREENS.md 하단 탭 5개. 분석은 가운데 강조
-const TABS = [
+// 02_SCREENS.md 하단 탭 5개. 분석은 가운데 강조 (PC에서는 SideNav가 같은 목록을 쓴다)
+export const TABS = [
   { key: "home", href: "/", icon: House, match: (p: string) => p === "/" },
   {
     key: "today",
@@ -31,7 +31,7 @@ export function BottomNav() {
   return (
     <nav
       aria-label={t("label")}
-      className="fixed inset-x-0 bottom-0 z-20 border-t border-border bg-nav backdrop-blur-xl pb-[env(safe-area-inset-bottom)]"
+      className="fixed inset-x-0 bottom-0 z-20 lg:hidden border-t border-border bg-nav backdrop-blur-xl pb-[env(safe-area-inset-bottom)]"
     >
       <ul className="mx-auto grid max-w-md grid-cols-5">
         {TABS.map((tab) => {

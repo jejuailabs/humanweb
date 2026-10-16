@@ -36,7 +36,7 @@ export function ImageCard({
 export function HeroArt({ src, height }: { src: string; height: number }) {
   return (
     <div
-      className="hero-art pointer-events-none absolute inset-x-0 -top-16 -z-10"
+      className="hero-art pointer-events-none absolute inset-x-0 -top-16 -z-10 lg:-top-10 lg:overflow-hidden lg:rounded-b-[2.5rem]"
       style={{ height }}
       aria-hidden
     >
