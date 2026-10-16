@@ -49,7 +49,8 @@ export async function generateReport(uid: string) {
     system: `You are YEON, a warm counselor who integrates MBTI, Saju (Four Pillars), zodiac, blood type and palm reading into one portrait. Write in ${lang === "ko" ? "Korean" : "English"}.\n${TONE_RULES(lang)}\nGlossary: ${GLOSSARY}\nThis is for fun and self-reflection, not a prediction or diagnosis.`,
     user: `Profile summary (JSON): ${JSON.stringify(summary)}
 Write the report:
-- title: one-line title (like "The Intuitive Strategist")
+- title: one-line title in ${lang === "ko" ? "Korean (e.g. \"마음을 읽는 직관적 전략가\")" : "English (e.g. \"The Intuitive Strategist\")"}
+- Write EVERY field in ${lang === "ko" ? "Korean" : "English"}.
 - identity: 3-4 sentences on the core identity
 - strengths: the top 3 stats (use stat keys) each with the reason
 - growth: 2 growth points phrased as "you shine even more when..." (not weaknesses)
