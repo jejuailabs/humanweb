@@ -42,5 +42,19 @@
 
 - 명도 대비 WCAG AA 확인 `[확인 필요]` (특히 라이트 모드 골드 텍스트)
 - `--fate-red`는 다른 용도(에러 등)에 쓰지 않는다. 에러는 별도 `--danger`
-- 구현에서 추가한 토큰: `--danger`(D #FB923C / L #C2410C), `--nav-bg`(상·하단 바 반투명 배경), `--glow`(배경 상단 보라 광채). 값은 `app/globals.css`
-- Tailwind 색 이름: `bg`, `surface`, `border`, `text`, `muted`, `primary`, `gold`, `fate-red`, `danger`, `nav` (예: `bg-surface`, `text-gold`)
+- 구현에서 추가한 토큰 (값은 `app/globals.css`):
+  - 면·선: `--bg-deep`, `--surface-strong`, `--border-strong`, `--track`(막대 바탕), `--nav-bg`
+  - 강조: `--primary-deep`, `--gold-soft`, `--on-accent`(보라·빨강 채움 위 글자), `--danger`
+  - 빛: `--glow`, `--glow-gold`, `--glow-violet`, `--star`, `--nebula`
+  - 점수 막대: `--love`, `--money`, `--work` / 오행: `--wood`, `--fire`, `--earth`, `--metal`, `--water`
+- Tailwind 색 이름: `bg`, `surface`, `surface-strong`, `border`, `border-strong`, `text`, `muted`, `primary`, `primary-deep`, `gold`, `gold-soft`, `fate-red`, `danger`, `on-accent`, `nav`, `track`
+- 공통 클래스: `.starfield`(별가루 배경), `.glass`(글래스 카드), `.glass-gold`·`.glass-violet`(빛나는 테두리)
+
+### 글꼴
+| 용도 | 글꼴 | Tailwind |
+|---|---|---|
+| 로고 | Cinzel | `font-logo` |
+| 제목·숫자 | Cormorant Garamond(라틴) + Noto Serif KR(한글) | `font-display` |
+| 본문 | Noto Sans KR | 기본 |
+
+- Google Fonts를 `<link>`로 불러온다. `next/font/google`은 Next 16.4 Turbopack(Windows)에서 빌드가 실패해 쓰지 않는다.

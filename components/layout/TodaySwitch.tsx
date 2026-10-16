@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
+import { SEGMENTED_WRAP, segmentedItem } from "@/components/ui/segmented";
 
 // 오늘 탭 상단 전환: 운세 / 일기 (02_SCREENS.md)
 export function TodaySwitch() {
@@ -15,16 +16,14 @@ export function TodaySwitch() {
   return (
     <nav
       aria-label={t("switchLabel")}
-      className="mb-4 grid grid-cols-2 rounded-full border border-border bg-surface p-1"
+      className={`${SEGMENTED_WRAP} grid-cols-2 mb-4`}
     >
       {items.map((item) => (
         <Link
           key={item.key}
           href={item.href}
           aria-current={item.active ? "page" : undefined}
-          className={`rounded-full py-2 text-center text-sm transition-colors ${
-            item.active ? "bg-primary text-bg font-medium" : "text-muted hover:text-text"
-          }`}
+          className={segmentedItem(item.active)}
         >
           {t(item.key)}
         </Link>

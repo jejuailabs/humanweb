@@ -3,80 +3,206 @@
 /* 색상 토큰 — 07_I18N_THEME.md. 컴포넌트는 이 변수(또는 아래 Tailwind 색)만 쓴다. */
 :root {
   --bg: #faf7f0;
-  --surface: rgba(255, 255, 255, 0.75);
+  --bg-deep: #f1ecdf;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(255, 255, 255, 0.9);
   --border: rgba(20, 20, 40, 0.08);
+  --border-strong: rgba(20, 20, 40, 0.16);
   --text: #1c1a2e;
   --text-muted: #6b6880;
   --primary: #6d5ae6;
+  --primary-deep: #4c3bc4;
   --gold: #b8912f;
+  --gold-soft: #d9b65a;
   --fate-red: #e0283b; /* 특별한 인연·빨간 선 전용 */
   --danger: #c2410c;
+  --on-accent: #ffffff; /* 보라·빨강 채움 위의 글자 */
   --line-strong: rgba(184, 145, 47, 0.9);
   --line-faint: rgba(28, 26, 46, 0.15);
-  --nav-bg: rgba(250, 247, 240, 0.85);
-  --glow: rgba(109, 90, 230, 0.12);
+  --nav-bg: rgba(250, 247, 240, 0.82);
+  --glow: rgba(109, 90, 230, 0.14);
+  --glow-gold: rgba(184, 145, 47, 0.28);
+  --glow-violet: rgba(109, 90, 230, 0.25);
+  --star: rgba(76, 59, 196, 0.35);
+  --nebula: rgba(109, 90, 230, 0.1);
+  --track: rgba(28, 26, 46, 0.08);
+  /* 점수 막대 — 애정·금전·업무 */
+  --love: #e0566a;
+  --money: #c99a2e;
+  --work: #6d5ae6;
+  /* 오행 — 목·화·토·금·수 */
+  --wood: #3f9a5a;
+  --fire: #d9473f;
+  --earth: #c99a2e;
+  --metal: #8a8aa3;
+  --water: #3b82c4;
   color-scheme: light;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --bg: #0b0e1a;
-    --surface: rgba(255, 255, 255, 0.06);
+    --bg-deep: #070914;
+    --surface: rgba(255, 255, 255, 0.05);
+    --surface-strong: rgba(255, 255, 255, 0.09);
     --border: rgba(255, 255, 255, 0.1);
+    --border-strong: rgba(255, 255, 255, 0.2);
     --text: #eceaf6;
     --text-muted: #9a97b5;
     --primary: #8b7cf6;
+    --primary-deep: #4a3bb8;
     --gold: #e8c468;
+    --gold-soft: #f3dc9a;
     --fate-red: #ff4d5e;
     --danger: #fb923c;
     --line-strong: rgba(232, 196, 104, 0.9);
     --line-faint: rgba(255, 255, 255, 0.18);
-    --nav-bg: rgba(11, 14, 26, 0.85);
-    --glow: rgba(139, 124, 246, 0.18);
+    --nav-bg: rgba(9, 11, 22, 0.82);
+    --glow: rgba(139, 124, 246, 0.2);
+    --glow-gold: rgba(232, 196, 104, 0.35);
+    --glow-violet: rgba(139, 124, 246, 0.35);
+    --star: rgba(255, 255, 255, 0.8);
+    --nebula: rgba(110, 80, 200, 0.18);
+    --track: rgba(255, 255, 255, 0.1);
+    --love: #ff6b81;
+    --money: #f0c35a;
+    --work: #9d8cff;
+    --wood: #6fcf7f;
+    --fire: #ff6b5e;
+    --earth: #f0c35a;
+    --metal: #c9c9dc;
+    --water: #5aa9f0;
     color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
   --bg: #0b0e1a;
-  --surface: rgba(255, 255, 255, 0.06);
+  --bg-deep: #070914;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-strong: rgba(255, 255, 255, 0.09);
   --border: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
   --text: #eceaf6;
   --text-muted: #9a97b5;
   --primary: #8b7cf6;
+  --primary-deep: #4a3bb8;
   --gold: #e8c468;
+  --gold-soft: #f3dc9a;
   --fate-red: #ff4d5e;
   --danger: #fb923c;
   --line-strong: rgba(232, 196, 104, 0.9);
   --line-faint: rgba(255, 255, 255, 0.18);
-  --nav-bg: rgba(11, 14, 26, 0.85);
-  --glow: rgba(139, 124, 246, 0.18);
+  --nav-bg: rgba(9, 11, 22, 0.82);
+  --glow: rgba(139, 124, 246, 0.2);
+  --glow-gold: rgba(232, 196, 104, 0.35);
+  --glow-violet: rgba(139, 124, 246, 0.35);
+  --star: rgba(255, 255, 255, 0.8);
+  --nebula: rgba(110, 80, 200, 0.18);
+  --track: rgba(255, 255, 255, 0.1);
+  --love: #ff6b81;
+  --money: #f0c35a;
+  --work: #9d8cff;
+  --wood: #6fcf7f;
+  --fire: #ff6b5e;
+  --earth: #f0c35a;
+  --metal: #c9c9dc;
+  --water: #5aa9f0;
   color-scheme: dark;
 }
 
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-text: var(--text);
   --color-muted: var(--text-muted);
   --color-primary: var(--primary);
+  --color-primary-deep: var(--primary-deep);
   --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
   --color-fate-red: var(--fate-red);
   --color-danger: var(--danger);
+  --color-on-accent: var(--on-accent);
   --color-nav: var(--nav-bg);
-  --font-sans: system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic",
-    "Noto Sans KR", sans-serif;
+  --color-track: var(--track);
+  --font-sans: "Noto Sans KR", system-ui, -apple-system, "Apple SD Gothic Neo",
+    "Malgun Gothic", sans-serif;
+  --font-logo: "Cinzel", serif;
+  --font-display: "Cormorant Garamond", "Noto Serif KR", serif;
 }
 
 body {
   background-color: var(--bg);
-  background-image: radial-gradient(
-    ellipse 120% 60% at 50% -10%,
-    var(--glow),
-    transparent 70%
-  );
-  background-attachment: fixed;
   color: var(--text);
-  font-family: var(--font-sans);
+  /* @theme inline 값은 CSS 변수로 출력되지 않으므로 글꼴은 직접 적는다 (--font-sans와 동일) */
+  font-family: "Noto Sans KR", system-ui, -apple-system, "Apple SD Gothic Neo", "Malgun Gothic",
+    sans-serif;
+}
+
+/* 별가루 + 성운 배경. 화면에 고정되고 테마 토큰을 따른다 */
+.starfield {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 90% 45% at 85% 0%, var(--nebula), transparent 70%),
+    radial-gradient(ellipse 70% 40% at 0% 35%, var(--nebula), transparent 70%),
+    radial-gradient(ellipse 120% 60% at 50% 110%, var(--glow), transparent 70%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+}
+.starfield::before,
+.starfield::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 12% 18%, var(--star), transparent 60%),
+    radial-gradient(1px 1px at 28% 72%, var(--star), transparent 60%),
+    radial-gradient(1.5px 1.5px at 44% 32%, var(--star), transparent 60%),
+    radial-gradient(1px 1px at 63% 12%, var(--star), transparent 60%),
+    radial-gradient(1px 1px at 78% 58%, var(--star), transparent 60%),
+    radial-gradient(1.5px 1.5px at 90% 26%, var(--star), transparent 60%),
+    radial-gradient(1px 1px at 8% 88%, var(--star), transparent 60%),
+    radial-gradient(1px 1px at 55% 86%, var(--star), transparent 60%),
+    radial-gradient(1px 1px at 36% 50%, var(--star), transparent 60%),
+    radial-gradient(1px 1px at 70% 40%, var(--star), transparent 60%);
+  background-size: 260px 260px;
+  opacity: 0.7;
+}
+.starfield::after {
+  background-size: 410px 410px;
+  background-position: 130px 70px;
+  opacity: 0.45;
+  animation: twinkle 6s ease-in-out infinite alternate;
+}
+@keyframes twinkle {
+  from { opacity: 0.2; }
+  to { opacity: 0.55; }
+}
+
+/* 글래스 카드 */
+.glass {
+  background: linear-gradient(160deg, var(--surface-strong), var(--surface));
+  border: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+.glass-gold {
+  border-color: color-mix(in srgb, var(--gold) 55%, transparent);
+  box-shadow: 0 0 24px -6px var(--glow-gold), inset 0 0 24px -12px var(--glow-gold);
+}
+.glass-violet {
+  border-color: color-mix(in srgb, var(--primary) 55%, transparent);
+  box-shadow: 0 0 24px -6px var(--glow-violet), inset 0 0 24px -12px var(--glow-violet);
+}
+.glow-text-gold {
+  text-shadow: 0 0 18px var(--glow-gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .starfield::after { animation: none; }
 }

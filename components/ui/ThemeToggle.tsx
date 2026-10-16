@@ -3,6 +3,7 @@
 import { useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
 import { applyTheme, readTheme, subscribeTheme, THEMES, type Theme } from "@/lib/theme";
+import { SEGMENTED_WRAP, segmentedItem } from "@/components/ui/segmented";
 
 const LABEL_KEYS: Record<Theme, "themeSystem" | "themeLight" | "themeDark"> = {
   system: "themeSystem",
@@ -17,16 +18,14 @@ export function ThemeToggle() {
   return (
     <fieldset className="flex flex-col gap-2">
       <legend className="mb-2 text-sm text-muted">{t("theme")}</legend>
-      <div className="grid grid-cols-3 rounded-full border border-border bg-surface p-1">
+      <div className={`${SEGMENTED_WRAP} grid-cols-3`}>
         {THEMES.map((value) => (
           <button
             key={value}
             type="button"
             aria-pressed={theme === value}
             onClick={() => applyTheme(value)}
-            className={`rounded-full py-2 text-sm transition-colors ${
-              theme === value ? "bg-primary text-bg font-medium" : "text-muted hover:text-text"
-            }`}
+            className={segmentedItem(theme === value)}
           >
             {t(LABEL_KEYS[value])}
           </button>

@@ -3,6 +3,9 @@
     "title": "YEON",
     "description": "Every way of reading yourself in one place — record each day and connect with people like you"
   },
+  "brand": {
+    "tagline": "Fate connects us"
+  },
   "nav": {
     "label": "Main menu",
     "home": "Home",
@@ -17,35 +20,148 @@
     "fortune": "Fortune",
     "diary": "Diary"
   },
+  "common": {
+    "back": "Back",
+    "unknown": "—",
+    "start": "Start",
+    "open": "Open"
+  },
+  "stats": {
+    "leadership": "Leadership",
+    "drive": "Drive",
+    "analysis": "Analysis",
+    "intuition": "Intuition",
+    "creativity": "Creativity",
+    "empathy": "Empathy",
+    "sociability": "Sociability",
+    "stability": "Stability",
+    "adventure": "Adventure",
+    "charisma": "Charisma"
+  },
+  "badges": {
+    "mbti": "Personality",
+    "zodiac": "Zodiac",
+    "animal": "Animal",
+    "blood": "Blood Type"
+  },
+  "analyses": {
+    "mbti": { "title": "Personality Type", "desc": "Explore your true self" },
+    "saju": { "title": "Saju Four Pillars", "desc": "Your rhythm in five elements" },
+    "palm": { "title": "Palm Reading", "desc": "Your hands tell another story" },
+    "zodiacBlood": { "title": "Star Sign & Blood Type", "desc": "Opens right away from sign-up" },
+    "tojeong": { "title": "Tojeong Fortune", "desc": "Your year, month by month" },
+    "face": { "title": "Face Reading", "desc": "What your face reveals" },
+    "name": { "title": "Name Reading", "desc": "The meaning in your name" },
+    "status": {
+      "completed": "Completed",
+      "available": "Start",
+      "locked": "Locked"
+    }
+  },
+  "elements": {
+    "wood": "Wood",
+    "fire": "Fire",
+    "earth": "Earth",
+    "metal": "Metal",
+    "water": "Water"
+  },
   "pages": {
     "home": {
       "title": "Who am I?",
-      "description": "Your overview dashboard will live here."
+      "guestName": "Welcome",
+      "guestTitle": "The start of knowing yourself",
+      "summaryTitle": "Today's Fortune",
+      "summaryLocked": "Add your birth date to open today's fortune",
+      "streak": "{count} days",
+      "mapTitle": "My Personality Map",
+      "completeness": "Confidence {value}%",
+      "mapLocked": "The map grows clearer with every analysis",
+      "analysesTitle": "My Analyses",
+      "reportTitle": "AI Overall Report",
+      "reportLocked": "Finish one analysis to get your report",
+      "profileTitle": "Profile completion",
+      "profileProgress": "{done}/{total} complete",
+      "profileHint": "Unlock more insights about yourself",
+      "chatCta": "Talk with AI"
     },
     "today": {
       "title": "How am I today?",
-      "description": "Your daily fortune will live here."
+      "prevDay": "Previous day",
+      "nextDay": "Next day",
+      "scoreCaption": "Today's fortune",
+      "luckyColor": "Lucky Color",
+      "luckyNumber": "Lucky Number",
+      "luckyDirection": "Lucky Direction",
+      "luckyItem": "Lucky Item",
+      "categoriesLabel": "Fortune types",
+      "catMine": "My Fortune",
+      "catZodiac": "Zodiac",
+      "catAnimal": "Animal",
+      "catBlood": "Blood Type",
+      "catMbti": "MBTI",
+      "messageLabel": "Today's message",
+      "messageLocked": "Add your birth date to open today's fortune",
+      "love": "Love",
+      "money": "Money",
+      "work": "Work",
+      "tojeongTitle": "This Month's Annual Fortune",
+      "tojeongDesc": "See your year's flow from your lunar birth date",
+      "share": "Share"
     },
     "diary": {
       "title": "One-line Diary",
-      "description": "Leave today in a single line. The you of next year will read it."
+      "description": "Leave today in a single line. The you of next year will read it.",
+      "composerLabel": "Today's line",
+      "placeholder": "Leave today in a single line",
+      "count": "{count}/100",
+      "moodLabel": "Mood",
+      "moodGreat": "Great",
+      "moodGood": "Good",
+      "moodOkay": "Okay",
+      "moodLow": "Low",
+      "moodTired": "Tired",
+      "private": "Only me",
+      "public": "Public",
+      "save": "Save",
+      "loginRequired": "Sign in to keep your diary",
+      "viewCalendar": "Calendar",
+      "viewList": "List"
     },
     "analyze": {
-      "title": "Discover yourself",
-      "description": "The analysis hub will live here."
+      "title": "Discover Yourself",
+      "description": "See yourself through many lenses",
+      "progress": "{done} of {total} steps completed"
     },
     "map": {
       "title": "Connection Map",
-      "description": "A map connecting you with people like you will live here."
+      "filtersLabel": "Map filters",
+      "filterAll": "All",
+      "filterBusiness": "Business",
+      "filterRegion": "Region",
+      "filterSchool": "School",
+      "filterSimilar": "Similar to me",
+      "me": "Me",
+      "empty": "Finish your analyses and people like you will appear on this map"
     },
     "me": {
       "title": "Me",
-      "description": "Your profile and settings will live here.",
-      "chatEntry": "Talk with AI"
+      "description": "Profile and settings",
+      "chatEntry": "Talk with AI",
+      "settingsTitle": "Settings"
     },
     "chat": {
       "title": "YEON, who knows you",
-      "description": "AI chat will live here."
+      "contextLabel": "What I'm using now",
+      "ctxStats": "Stats",
+      "ctxMbti": "MBTI",
+      "ctxSaju": "Saju",
+      "ctxToday": "Today",
+      "empty": "Finish an analysis to start a conversation that knows you",
+      "suggestionsLabel": "Suggested questions",
+      "q1": "What kind of work suits me lately?",
+      "q2": "How should I spend today?",
+      "inputPlaceholder": "Ask anything",
+      "send": "Send"
     }
   },
   "settings": {
@@ -54,8 +170,5 @@
     "themeLight": "Light",
     "themeDark": "Dark",
     "language": "Language"
-  },
-  "common": {
-    "back": "Back"
   }
 }

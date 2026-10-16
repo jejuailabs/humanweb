@@ -3,6 +3,9 @@
     "title": "YEON",
     "description": "나를 해석하는 모든 체계를 한곳에, 매일의 나를 기록하고 비슷한 사람과 이어지는 공간"
   },
+  "brand": {
+    "tagline": "Fate connects us"
+  },
   "nav": {
     "label": "주요 메뉴",
     "home": "홈",
@@ -17,35 +20,148 @@
     "fortune": "운세",
     "diary": "일기"
   },
+  "common": {
+    "back": "뒤로",
+    "unknown": "—",
+    "start": "시작하기",
+    "open": "열기"
+  },
+  "stats": {
+    "leadership": "리더십",
+    "drive": "추진력",
+    "analysis": "분석력",
+    "intuition": "직관력",
+    "creativity": "창의성",
+    "empathy": "공감력",
+    "sociability": "사교성",
+    "stability": "안정성",
+    "adventure": "모험심",
+    "charisma": "카리스마"
+  },
+  "badges": {
+    "mbti": "성격 유형",
+    "zodiac": "별자리",
+    "animal": "띠",
+    "blood": "혈액형"
+  },
+  "analyses": {
+    "mbti": { "title": "성격 유형", "desc": "나의 진짜 모습을 알아봐요" },
+    "saju": { "title": "사주", "desc": "타고난 다섯 기운의 흐름" },
+    "palm": { "title": "손금", "desc": "손바닥에 새겨진 이야기" },
+    "zodiacBlood": { "title": "별자리·혈액형", "desc": "가입 정보로 바로 열려요" },
+    "tojeong": { "title": "토정비결", "desc": "올해의 달별 흐름" },
+    "face": { "title": "관상", "desc": "얼굴에 담긴 나의 결" },
+    "name": { "title": "이름 풀이", "desc": "이름에 담긴 의미" },
+    "status": {
+      "completed": "완료",
+      "available": "시작하기",
+      "locked": "잠김"
+    }
+  },
+  "elements": {
+    "wood": "목",
+    "fire": "화",
+    "earth": "토",
+    "metal": "금",
+    "water": "수"
+  },
   "pages": {
     "home": {
       "title": "나는 어떤 사람인가",
-      "description": "종합 대시보드가 이곳에 들어와요."
+      "guestName": "반가워요",
+      "guestTitle": "나를 알아가는 여정의 시작",
+      "summaryTitle": "오늘의 운세",
+      "summaryLocked": "생년월일을 입력하면 오늘의 운세가 열려요",
+      "streak": "{count}일 연속",
+      "mapTitle": "나의 성향 지도",
+      "completeness": "신뢰도 {value}%",
+      "mapLocked": "분석을 할수록 지도가 선명해져요",
+      "analysesTitle": "나의 분석",
+      "reportTitle": "AI 종합 보고서",
+      "reportLocked": "분석을 하나 이상 마치면 보고서가 만들어져요",
+      "profileTitle": "프로필 완성도",
+      "profileProgress": "{done}/{total} 완료",
+      "profileHint": "더 많은 나를 알아보세요",
+      "chatCta": "AI와 이야기하기"
     },
     "today": {
       "title": "오늘의 나는 어떤가",
-      "description": "데일리 운세가 이곳에 들어와요."
+      "prevDay": "이전 날",
+      "nextDay": "다음 날",
+      "scoreCaption": "오늘의 운세",
+      "luckyColor": "행운의 색",
+      "luckyNumber": "행운의 숫자",
+      "luckyDirection": "행운의 방향",
+      "luckyItem": "행운의 아이템",
+      "categoriesLabel": "운세 종류",
+      "catMine": "내 운세",
+      "catZodiac": "별자리",
+      "catAnimal": "띠",
+      "catBlood": "혈액형",
+      "catMbti": "MBTI",
+      "messageLabel": "오늘의 메시지",
+      "messageLocked": "생년월일을 입력하면 오늘의 운세가 열려요",
+      "love": "애정",
+      "money": "금전",
+      "work": "업무",
+      "tojeongTitle": "이번 달 토정비결",
+      "tojeongDesc": "음력 생년월일로 한 해의 흐름을 봐요",
+      "share": "공유"
     },
     "diary": {
       "title": "한 줄 일기장",
-      "description": "오늘을 한 줄로 남겨보세요. 1년 뒤의 내가 읽게 될 거예요."
+      "description": "오늘을 한 줄로 남겨보세요. 1년 뒤의 내가 읽게 될 거예요.",
+      "composerLabel": "오늘의 한 줄",
+      "placeholder": "오늘을 한 줄로 남겨보세요",
+      "count": "{count}/100",
+      "moodLabel": "기분",
+      "moodGreat": "아주 좋음",
+      "moodGood": "좋음",
+      "moodOkay": "보통",
+      "moodLow": "가라앉음",
+      "moodTired": "지침",
+      "private": "나만 보기",
+      "public": "공개",
+      "save": "남기기",
+      "loginRequired": "로그인하면 기록할 수 있어요",
+      "viewCalendar": "달력",
+      "viewList": "목록"
     },
     "analyze": {
       "title": "나를 알아가기",
-      "description": "분석 허브가 이곳에 들어와요."
+      "description": "여러 체계로 나를 비춰봐요",
+      "progress": "{total}단계 중 {done}단계 완료"
     },
     "map": {
       "title": "인연 지도",
-      "description": "비슷한 사람들과 이어지는 지도가 이곳에 들어와요."
+      "filtersLabel": "지도 필터",
+      "filterAll": "전체",
+      "filterBusiness": "업종",
+      "filterRegion": "지역",
+      "filterSchool": "학교",
+      "filterSimilar": "나와 비슷한",
+      "me": "나",
+      "empty": "분석을 마치면 나와 닮은 사람들이 이 지도에 나타나요"
     },
     "me": {
       "title": "나",
-      "description": "프로필과 설정이 이곳에 들어와요.",
-      "chatEntry": "AI와 이야기하기"
+      "description": "프로필과 설정",
+      "chatEntry": "AI와 이야기하기",
+      "settingsTitle": "설정"
     },
     "chat": {
       "title": "나를 아는 YEON",
-      "description": "AI 대화가 이곳에 들어와요."
+      "contextLabel": "지금 반영 중인 정보",
+      "ctxStats": "스탯",
+      "ctxMbti": "MBTI",
+      "ctxSaju": "사주",
+      "ctxToday": "오늘 운세",
+      "empty": "분석을 마치면 나를 아는 대화를 시작할 수 있어요",
+      "suggestionsLabel": "추천 질문",
+      "q1": "요즘 나에게 맞는 일은?",
+      "q2": "오늘 어떻게 보내면 좋을까?",
+      "inputPlaceholder": "무엇이든 물어보세요",
+      "send": "보내기"
     }
   },
   "settings": {
@@ -54,8 +170,5 @@
     "themeLight": "라이트",
     "themeDark": "다크",
     "language": "언어"
-  },
-  "common": {
-    "back": "뒤로"
   }
 }

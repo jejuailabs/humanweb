@@ -1,7 +1,8 @@
 "use client";
 
-import { CalendarDays, House, Orbit, Sparkles, UserRound } from "lucide-react";
+import { CalendarDays, House, Orbit, UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { Sparkle } from "@/components/ui/SectionTitle";
 import { Link, usePathname } from "@/i18n/navigation";
 
 // 02_SCREENS.md 하단 탭 5개. 분석은 가운데 강조
@@ -13,13 +14,7 @@ const TABS = [
     icon: CalendarDays,
     match: (p: string) => p.startsWith("/today") || p.startsWith("/diary"),
   },
-  {
-    key: "analyze",
-    href: "/analyze",
-    icon: Sparkles,
-    match: (p: string) => p.startsWith("/analyze"),
-    center: true,
-  },
+  { key: "analyze", href: "/analyze", icon: null, match: (p: string) => p.startsWith("/analyze") },
   { key: "map", href: "/map", icon: Orbit, match: (p: string) => p.startsWith("/map") },
   {
     key: "me",
@@ -42,28 +37,32 @@ export function BottomNav() {
         {TABS.map((tab) => {
           const active = tab.match(pathname);
           const Icon = tab.icon;
-          const center = "center" in tab && tab.center;
           return (
             <li key={tab.key}>
               <Link
                 href={tab.href}
                 aria-current={active ? "page" : undefined}
-                className={`flex h-16 flex-col items-center justify-center gap-1 text-xs transition-colors ${
+                className={`relative flex h-[68px] flex-col items-center justify-center gap-1 text-[11px] transition-colors ${
                   active ? "text-gold" : "text-muted hover:text-text"
                 }`}
               >
-                {center ? (
+                {Icon ? (
+                  <Icon className="size-6" strokeWidth={1.4} aria-hidden />
+                ) : (
                   <span
-                    className={`flex size-9 items-center justify-center rounded-full border ${
-                      active ? "border-gold" : "border-border"
+                    className={`flex size-11 items-center justify-center rounded-full border ${
+                      active
+                        ? "border-gold shadow-[0_0_18px_-2px_var(--glow-gold)]"
+                        : "border-border-strong"
                     }`}
                   >
-                    <Icon className="size-5" aria-hidden />
+                    <Sparkle className="size-5" />
                   </span>
-                ) : (
-                  <Icon className="size-6" aria-hidden />
                 )}
                 <span>{t(tab.key)}</span>
+                {active && (
+                  <span className="absolute bottom-1.5 size-1 rounded-full bg-gold" aria-hidden />
+                )}
               </Link>
             </li>
           );
