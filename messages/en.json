@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "title": "YEON",
+    "description": "Every way of reading yourself in one place — record each day and connect with people like you"
+  },
+  "nav": {
+    "label": "Main menu",
+    "home": "Home",
+    "today": "Today",
+    "analyze": "Analyze",
+    "map": "Map",
+    "me": "Me",
+    "notifications": "Notifications"
+  },
+  "today": {
+    "switchLabel": "Switch today view",
+    "fortune": "Fortune",
+    "diary": "Diary"
+  },
+  "pages": {
+    "home": {
+      "title": "Who am I?",
+      "description": "Your overview dashboard will live here."
+    },
+    "today": {
+      "title": "How am I today?",
+      "description": "Your daily fortune will live here."
+    },
+    "diary": {
+      "title": "One-line Diary",
+      "description": "Leave today in a single line. The you of next year will read it."
+    },
+    "analyze": {
+      "title": "Discover yourself",
+      "description": "The analysis hub will live here."
+    },
+    "map": {
+      "title": "Connection Map",
+      "description": "A map connecting you with people like you will live here."
+    },
+    "me": {
+      "title": "Me",
+      "description": "Your profile and settings will live here.",
+      "chatEntry": "Talk with AI"
+    },
+    "chat": {
+      "title": "YEON, who knows you",
+      "description": "AI chat will live here."
+    }
+  },
+  "settings": {
+    "theme": "Theme",
+    "themeSystem": "System",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "language": "Language"
+  },
+  "common": {
+    "back": "Back"
+  }
+}

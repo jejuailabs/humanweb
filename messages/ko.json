@@ -1,0 +1,61 @@
+{
+  "meta": {
+    "title": "YEON",
+    "description": "나를 해석하는 모든 체계를 한곳에, 매일의 나를 기록하고 비슷한 사람과 이어지는 공간"
+  },
+  "nav": {
+    "label": "주요 메뉴",
+    "home": "홈",
+    "today": "오늘",
+    "analyze": "분석",
+    "map": "지도",
+    "me": "나",
+    "notifications": "알림"
+  },
+  "today": {
+    "switchLabel": "오늘 보기 전환",
+    "fortune": "운세",
+    "diary": "일기"
+  },
+  "pages": {
+    "home": {
+      "title": "나는 어떤 사람인가",
+      "description": "종합 대시보드가 이곳에 들어와요."
+    },
+    "today": {
+      "title": "오늘의 나는 어떤가",
+      "description": "데일리 운세가 이곳에 들어와요."
+    },
+    "diary": {
+      "title": "한 줄 일기장",
+      "description": "오늘을 한 줄로 남겨보세요. 1년 뒤의 내가 읽게 될 거예요."
+    },
+    "analyze": {
+      "title": "나를 알아가기",
+      "description": "분석 허브가 이곳에 들어와요."
+    },
+    "map": {
+      "title": "인연 지도",
+      "description": "비슷한 사람들과 이어지는 지도가 이곳에 들어와요."
+    },
+    "me": {
+      "title": "나",
+      "description": "프로필과 설정이 이곳에 들어와요.",
+      "chatEntry": "AI와 이야기하기"
+    },
+    "chat": {
+      "title": "나를 아는 YEON",
+      "description": "AI 대화가 이곳에 들어와요."
+    }
+  },
+  "settings": {
+    "theme": "테마",
+    "themeSystem": "시스템",
+    "themeLight": "라이트",
+    "themeDark": "다크",
+    "language": "언어"
+  },
+  "common": {
+    "back": "뒤로"
+  }
+}
