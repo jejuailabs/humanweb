@@ -1,9 +1,9 @@
 import { Brain, ChevronRight, Droplet, MessageCircle, Rabbit, Sparkles, UserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { AnalysisCard } from "@/components/analysis/AnalysisCard";
 import { BUTTON_CLASS } from "@/components/ui/Button";
 import { Chip } from "@/components/ui/Chip";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { HeroArt, ImageCard } from "@/components/ui/ImageCard";
 import { ProgressBar } from "@/components/ui/ProgressBar";
 import { RadarChart } from "@/components/ui/RadarChart";
 import { ScoreRing } from "@/components/ui/ScoreRing";
@@ -29,9 +29,12 @@ export default function Page() {
   const tc = useTranslations("common");
   const tb = useTranslations("badges");
   const ts = useTranslations("stats");
+  const ta = useTranslations("analyses");
 
   return (
     <div className="flex flex-col gap-6">
+      <HeroArt src="/assets/bg/home-hero.webp" height={520} />
+
       {/* 프로필 머리 */}
       <section className="flex flex-col items-center pt-2 text-center">
         <span className="relative flex size-28 items-center justify-center rounded-full border-2 border-gold bg-surface shadow-[0_0_40px_-6px_var(--glow-gold)]">
@@ -52,17 +55,17 @@ export default function Page() {
       </section>
 
       {/* 오늘의 요약 카드 */}
-      <Link href="/today">
-        <GlassCard variant="violet" className="flex items-center gap-4">
-          <ScoreRing size={92} showMax={false} />
-          <span className="flex min-w-0 flex-1 flex-col">
-            <span className="text-xs tracking-[0.2em] text-muted">{t("summaryTitle")}</span>
-            <span className="mt-1 font-display text-lg leading-snug text-text">
-              {t("summaryLocked")}
+      <Link href="/today" className="block">
+        <ImageCard src="/assets/bg/home-fortune.webp" scrim="left" className="glass-violet">
+          <div className="flex items-center gap-4 p-5">
+            <ScoreRing size={92} showMax={false} />
+            <span className="flex min-w-0 flex-1 flex-col">
+              <span className="text-xs tracking-[0.2em] text-on-image-muted">{t("summaryTitle")}</span>
+              <span className="mt-1 font-display text-lg leading-snug">{t("summaryLocked")}</span>
             </span>
-          </span>
-          <ChevronRight className="size-5 shrink-0 text-muted" aria-hidden />
-        </GlassCard>
+            <ChevronRight className="size-5 shrink-0 text-on-image-muted" aria-hidden />
+          </div>
+        </ImageCard>
       </Link>
 
       {/* 성향 지도 */}
@@ -77,10 +80,17 @@ export default function Page() {
       {/* 분석 카드 */}
       <section>
         <SectionTitle>{t("analysesTitle")}</SectionTitle>
-        <div className="flex flex-col gap-3">
-          <AnalysisCard id="mbti" status="available" />
-          <AnalysisCard id="saju" status="locked" />
-          <AnalysisCard id="palm" status="locked" />
+        <div className="-mx-4 flex snap-x gap-3 overflow-x-auto px-4 pb-1 [scrollbar-width:none]">
+          {(["mbti", "saju", "palm"] as const).map((id) => (
+            <Link key={id} href="/analyze" className="w-[44%] shrink-0 snap-start">
+              <ImageCard src={`/assets/analysis/card-${id}.webp`} className="aspect-[3/4]" sizes="200px">
+                <div className="flex h-full flex-col justify-end p-4">
+                  <span className="font-display text-xl leading-tight">{ta(`${id}.title`)}</span>
+                  <span className="mt-1 text-xs text-on-image-muted">{ta(`${id}.desc`)}</span>
+                </div>
+              </ImageCard>
+            </Link>
+          ))}
         </div>
       </section>
 

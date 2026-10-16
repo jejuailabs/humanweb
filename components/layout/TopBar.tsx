@@ -7,7 +7,7 @@ export function TopBar() {
   const t = useTranslations();
 
   return (
-    <header className="sticky top-0 z-10 bg-gradient-to-b from-bg via-bg/80 to-transparent">
+    <header className="sticky top-0 z-10 bg-gradient-to-b from-bg/70 to-transparent">
       <div className="mx-auto flex h-16 max-w-md items-center justify-between px-5">
         <Link href="/" aria-label={t("meta.title")}>
           <Logo size={26} tagline={t("brand.tagline")} />

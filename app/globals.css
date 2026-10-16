@@ -17,6 +17,11 @@
   --fate-red: #e0283b; /* 특별한 인연·빨간 선 전용 */
   --danger: #c2410c;
   --on-accent: #ffffff; /* 보라·빨강 채움 위의 글자 */
+  /* 일러스트 이미지 — 이미지는 어두운 그림이라 위 글자·덮개는 두 테마 공통 */
+  --on-image: #f3f1fb;
+  --on-image-muted: rgba(236, 234, 246, 0.75);
+  --image-scrim: rgba(7, 9, 20, 0.88);
+  --hero-opacity: 0.22; /* 라이트 모드에서는 배경 그림을 옅게 */
   --line-strong: rgba(184, 145, 47, 0.9);
   --line-faint: rgba(28, 26, 46, 0.15);
   --nav-bg: rgba(250, 247, 240, 0.82);
@@ -64,6 +69,7 @@
     --star: rgba(255, 255, 255, 0.8);
     --nebula: rgba(110, 80, 200, 0.18);
     --track: rgba(255, 255, 255, 0.1);
+    --hero-opacity: 1;
     --love: #ff6b81;
     --money: #f0c35a;
     --work: #9d8cff;
@@ -100,6 +106,7 @@
   --star: rgba(255, 255, 255, 0.8);
   --nebula: rgba(110, 80, 200, 0.18);
   --track: rgba(255, 255, 255, 0.1);
+  --hero-opacity: 1;
   --love: #ff6b81;
   --money: #f0c35a;
   --work: #9d8cff;
@@ -126,6 +133,8 @@
   --color-fate-red: var(--fate-red);
   --color-danger: var(--danger);
   --color-on-accent: var(--on-accent);
+  --color-on-image: var(--on-image);
+  --color-on-image-muted: var(--on-image-muted);
   --color-nav: var(--nav-bg);
   --color-track: var(--track);
   --font-sans: "Noto Sans KR", system-ui, -apple-system, "Apple SD Gothic Neo",
@@ -201,6 +210,13 @@ body {
 }
 .glow-text-gold {
   text-shadow: 0 0 18px var(--glow-gold);
+}
+
+/* 화면 상단 배경 그림: 아래로 사라지고, 라이트 모드에서는 옅게 */
+.hero-art {
+  opacity: var(--hero-opacity);
+  mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -16,6 +16,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { TodaySwitch } from "@/components/layout/TodaySwitch";
 import { TodayDate } from "@/components/today/TodayDate";
 import { GlassCard } from "@/components/ui/GlassCard";
+import { HeroArt, ImageCard } from "@/components/ui/ImageCard";
 import { ScoreBar } from "@/components/ui/ScoreBar";
 import { ScoreRing } from "@/components/ui/ScoreRing";
 import { OrnamentDivider } from "@/components/ui/SectionTitle";
@@ -43,6 +44,7 @@ export default function Page() {
 
   return (
     <div className="flex flex-col">
+      <HeroArt src="/assets/bg/today-hero.webp" height={640} />
       <TodaySwitch />
 
       {/* 날짜 + 이동 */}
@@ -84,26 +86,30 @@ export default function Page() {
       </nav>
 
       {/* 오늘의 메시지 */}
-      <GlassCard className="flex flex-col gap-4">
-        <span className="text-[10px] tracking-[0.35em] text-muted uppercase">{t("messageLabel")}</span>
-        <p className="font-display text-xl leading-snug text-text">{t("messageLocked")}</p>
-        <span className="h-px bg-border" />
-        <div className="flex flex-col gap-3">
-          <ScoreBar label={t("love")} color="love" icon={<Heart />} />
-          <ScoreBar label={t("money")} color="money" icon={<Coins />} />
-          <ScoreBar label={t("work")} color="work" icon={<BriefcaseBusiness />} />
+      <ImageCard src="/assets/bg/today-crane.webp" scrim="left" className="glass">
+        <div className="flex flex-col gap-4 p-5">
+          <span className="text-[10px] tracking-[0.35em] text-on-image-muted uppercase">{t("messageLabel")}</span>
+          <p className="max-w-[75%] font-display text-xl leading-snug">{t("messageLocked")}</p>
+          <span className="h-px bg-on-image/15" />
+          <div className="flex flex-col gap-3 [&_.text-text]:text-on-image">
+            <ScoreBar label={t("love")} color="love" icon={<Heart />} />
+            <ScoreBar label={t("money")} color="money" icon={<Coins />} />
+            <ScoreBar label={t("work")} color="work" icon={<BriefcaseBusiness />} />
+          </div>
         </div>
-      </GlassCard>
+      </ImageCard>
 
       {/* 이번 달 토정비결 (접힘) */}
-      <GlassCard className="mt-4 flex items-center gap-4">
-        <CalendarDays className="size-6 shrink-0 text-gold" strokeWidth={1.3} aria-hidden />
-        <span className="flex flex-1 flex-col">
-          <span className="font-display text-lg text-text">{t("tojeongTitle")}</span>
-          <span className="text-xs text-muted">{t("tojeongDesc")}</span>
-        </span>
-        <ChevronDown className="size-5 text-muted" aria-hidden />
-      </GlassCard>
+      <ImageCard src="/assets/bg/today-plum.webp" scrim="left" className="mt-4">
+        <div className="flex items-center gap-4 p-5">
+          <CalendarDays className="size-6 shrink-0 text-gold" strokeWidth={1.3} aria-hidden />
+          <span className="flex flex-1 flex-col">
+            <span className="font-display text-lg">{t("tojeongTitle")}</span>
+            <span className="text-xs text-on-image-muted">{t("tojeongDesc")}</span>
+          </span>
+          <ChevronDown className="size-5 text-on-image-muted" aria-hidden />
+        </div>
+      </ImageCard>
 
       <button type="button" className="mt-4 flex items-center justify-center gap-2 self-center text-sm text-muted hover:text-text">
         <Share2 className="size-4" aria-hidden />
