@@ -5,11 +5,14 @@ import { zodiacOf, type BloodType, type ZodiacSign } from "@/lib/saju/zodiac";
 import {
   combineStats,
   statsFromBlood,
+  statsFromElements,
+  statsFromFace,
   statsFromMbti,
   statsFromPalm,
   statsFromSaju,
   statsFromZodiac,
   type AnalysisType,
+  type FaceFeatures,
   type MbtiAxes,
   type PalmFeatures,
   type Stats,
@@ -90,6 +93,8 @@ export async function recomputeStats(uid: string) {
     if (d.id === "palm") parts.palm = statsFromPalm(v.features as PalmFeatures);
     if (d.id === "zodiac") parts.zodiac = statsFromZodiac(v.sign as ZodiacSign);
     if (d.id === "blood") parts.blood = statsFromBlood(v.type as BloodType);
+    if (d.id === "face") parts.face = statsFromFace(v.features as FaceFeatures);
+    if (d.id === "name") parts.name = statsFromElements(v.elements as SajuResult["elements"]);
   }
   const result = combineStats(parts);
   await userRef(uid).collection("stats").doc("current").set({ ...result, updatedAt: FieldValue.serverTimestamp() });

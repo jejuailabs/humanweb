@@ -90,6 +90,22 @@ try {
   const card = await fetch(`${BASE}/api/share-card?kind=fortune&lang=ko&date=${today}&score=70&text=${encodeURIComponent("테스트 카드")}`);
   console.log(`${card.ok ? "OK  " : "FAIL"} ${card.status} share card ${card.headers.get("content-type")}`);
 
+  // 토정비결·이름 풀이·관상
+  const tj = await call("tojeong generate", "POST", "/api/tojeong");
+  console.log("     gua:", tj.data.tojeong?.code, "| title:", tj.data.tojeong?.title, "| months:", tj.data.tojeong?.months?.length, "| source:", tj.data.tojeong?.source);
+  const tj2 = await call("tojeong get", "GET", "/api/tojeong");
+  console.log("     same gua:", tj2.data.tojeong?.code === tj.data.tojeong?.code);
+  const nm = await call("name reading", "POST", "/api/analyses/name", { surname: "김", given: "하늘" });
+  console.log("     grids:", JSON.stringify(nm.data.grids), "| title:", nm.data.title);
+  const meAfter = await call("me after name", "GET", "/api/me");
+  console.log("     name stored without raw name:", !JSON.stringify(meAfter.data.analyses?.name ?? {}).includes("하늘"), "| completeness:", meAfter.data.stats?.completeness);
+  const badName = await call("name non-hangul (→400)", "POST", "/api/analyses/name", { surname: "Kim", given: "Sky" });
+  console.log("     rejected:", badName.status === 400);
+  const noConsent = new FormData();
+  noConsent.append("image", new Blob([new Uint8Array(10)], { type: "image/png" }), "x.png");
+  const fc = await fetch(BASE + "/api/analyses/face", { method: "POST", headers: { Authorization: H.Authorization }, body: noConsent });
+  console.log(`${fc.status === 403 ? "OK  " : "FAIL"} ${fc.status} face without consent rejected`);
+
   const memory = await call("memory list", "GET", "/api/memory");
   console.log("     memories:", memory.data.items?.length);
   const admin = await call("admin (non-admin → 403)", "GET", "/api/admin/summary");

@@ -35,6 +35,8 @@ export type Me = {
     };
     mbti?: { type: string; axes: { E: number; N: number; T: number; J: number }; source: "test" | "input" };
     palm?: { features: Record<string, number>; summary: string };
+    face?: { features: Record<string, number>; summary: string };
+    name?: NameAnalysis;
   };
   stats: { stats: Record<string, number>; completeness: number; contributions: Record<string, number> } | null;
   streak: { count: number; lastDate: string | null };
@@ -77,3 +79,32 @@ export type DiaryEntry = {
   visibility: "private" | "public";
   fortuneSnapshot: { total: number; summary: string } | null;
 };
+
+type ElementKey = "wood" | "fire" | "earth" | "metal" | "water";
+export type NameAnalysis = {
+  chars: number;
+  strokes: number[];
+  soundElements: ElementKey[];
+  elements: Record<ElementKey, number>;
+  flow: ("generate" | "control" | "same")[];
+  grids: { won: number; hyeong: number; i: number; jeong: number };
+  title: string;
+  summary: string;
+  points: string[];
+};
+
+export type Tojeong = {
+  year: number;
+  age: number;
+  upper: number;
+  middle: number;
+  lower: number;
+  code: string;
+  yearGanzhi: string;
+  scores: number[];
+  title: string;
+  overview: string;
+  months: string[];
+  lang: string;
+};
+export type TojeongResponse = { year: number; month: number; tojeong: Tojeong | null };

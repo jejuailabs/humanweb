@@ -35,6 +35,8 @@ export const DELETE = handler(async (req) => {
   const pub = await db().collection("publicDiary").where("uid", "==", uid).get();
   await Promise.all(pub.docs.map((d) => db().recursiveDelete(d.ref)));
   await db().doc(`publicProfiles/${uid}`).delete().catch(() => {});
+  const tojeong = await db().collection("tojeong").where("uid", "==", uid).get();
+  await Promise.all(tojeong.docs.map((d) => d.ref.delete()));
   await db().recursiveDelete(userRef(uid));
   await adminAuth().deleteUser(uid);
   return json({ ok: true });

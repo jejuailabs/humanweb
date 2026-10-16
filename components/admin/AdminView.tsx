@@ -18,7 +18,7 @@ type Summary = {
 
 const FUNNEL_LABEL: Record<string, string> = { signup: "funnelSignup", signup_time_known: "funnelTime", analysis_mbti: "funnelMbti", analysis_palm: "funnelPalm" };
 
-const METRIC_KEYS = ["signup", "diary_private", "diary_public", "analysis_mbti", "analysis_palm", "ai_daily", "ai_report", "ai_chat", "ai_palm"];
+const METRIC_KEYS = ["signup", "diary_private", "diary_public", "analysis_mbti", "analysis_palm", "analysis_face", "analysis_name", "analysis_tojeong", "ai_daily", "ai_report", "ai_chat", "ai_palm"];
 
 // 08_ADMIN.md — 집계 수치만, 비공개 원문은 보지 않는다
 export function AdminView() {

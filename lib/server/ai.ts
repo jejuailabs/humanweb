@@ -30,7 +30,7 @@ async function callOpenAI(messages: Msg[], jsonSchema?: { name: string; schema: 
 
 // JSON 응답 + zod 검증 + 금지어 검사. 실패하면 재시도(기본 2회), 그래도 실패하면 throw → 호출부가 예비 문장 사용
 export async function aiJson<T>(opts: {
-  feature: "daily" | "report" | "chat" | "palm" | "memory";
+  feature: "daily" | "report" | "chat" | "palm" | "face" | "name" | "tojeong" | "memory";
   name: string;
   schema: ZodType<T>;
   system: string;

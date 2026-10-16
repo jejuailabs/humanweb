@@ -6,31 +6,34 @@ import { StepDots } from "@/components/ui/ProgressBar";
 import { Link } from "@/i18n/navigation";
 import { useAuth } from "@/lib/client/auth";
 import { useMe } from "@/lib/client/me";
-import type { Me } from "@/lib/client/types";
+import { useApi } from "@/lib/client/api";
+import type { Me, TojeongResponse } from "@/lib/client/types";
 import { AnalysisCard, type AnalysisKey, type AnalysisStatus } from "./AnalysisCard";
 
-// 분석 허브. 토정비결(계산 기준 [확인 필요])·관상(민감정보 [확인 필요])·이름(P2)은 잠김
-const LIST: { id: AnalysisKey; href?: string; done: (m?: Me) => boolean }[] = [
+// 분석 허브. 가입 전에는 모두 잠김
+const LIST: { id: AnalysisKey; href?: string; done: (m?: Me, tojeongDone?: boolean) => boolean }[] = [
   { id: "zodiacBlood", href: "/analyze/zodiac", done: (m) => !!m?.analyses.zodiac },
   { id: "saju", href: "/analyze/saju", done: (m) => !!m?.analyses.saju },
   { id: "mbti", href: "/analyze/mbti", done: (m) => !!m?.analyses.mbti },
   { id: "palm", href: "/analyze/palm", done: (m) => !!m?.analyses.palm },
-  { id: "tojeong", done: () => false },
-  { id: "face", done: () => false },
-  { id: "name", done: () => false },
+  { id: "tojeong", href: "/analyze/tojeong", done: (_m, tj) => !!tj },
+  { id: "face", href: "/analyze/face", done: (m) => !!m?.analyses.face },
+  { id: "name", href: "/analyze/name", done: (m) => !!m?.analyses.name },
 ];
 
 export function AnalyzeHub() {
   const t = useTranslations("pages.analyze");
   const { user, ready } = useAuth();
   const { data: me, isLoading } = useMe();
+  const { data: tojeong } = useApi<TojeongResponse>(me?.onboarded ? "/api/tojeong" : null);
   if (!ready || (user && isLoading)) return <Loading />;
   const onboarded = !!me?.onboarded;
+  const tojeongDone = !!tojeong?.tojeong;
   const items = LIST.map((x) => ({
     ...x,
-    status: (x.done(me) ? "completed" : x.href && onboarded ? "available" : "locked") as AnalysisStatus,
+    status: (x.done(me, tojeongDone) ? "completed" : x.href && onboarded ? "available" : "locked") as AnalysisStatus,
   }));
-  const total = 6;
+  const total = LIST.length;
   const done = items.filter((x) => x.status === "completed").length;
 
   return (

@@ -24,6 +24,10 @@ declare module "lunar-javascript" {
     getYearInGanZhi(): string;
     getMonthInGanZhi(): string;
   }
+  export class LunarMonth {
+    static fromYm(y: number, m: number): LunarMonth;
+    getDayCount(): number;
+  }
   export class EightChar {
     setSect(sect: 1 | 2): void; // 1: 23시에 일주 변경, 2: 0시에 변경(기본)
     getYear(): string;

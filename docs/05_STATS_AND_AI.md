@@ -93,6 +93,12 @@ AI 이미지 분석이 아래 특징을 0~100으로 반환 (JSON). 신뢰도 낮
 | 공기 | sociability, analysis | creativity | 50 |
 | 물 | empathy, intuition | creativity | 50 |
 
+### 2-6. 관상 → 스탯 `[자체 설계]`
+AI가 인상 특징 6개를 0~100으로 반환: 이마(forehead)→analysis, 이마·눈빛 평균→intuition, 눈썹(brows)→leadership, 눈썹·턱 평균→drive, 눈빛(eyes)→empathy, 콧대(nose)→stability, 콧대·턱 평균→charisma, 입꼬리(mouth)→sociability, 턱선(jaw)→adventure, creativity 50.
+
+### 2-7. 이름 → 스탯 `[자체 설계]`
+초성 발음오행 비율을 사주 기본 점수 식(2-2, 십신 보정 없음)에 그대로 넣는다.
+
 ### 2-5. 혈액형 → 스탯
 통속적 성격론 기반, 가중치 최소. A: stability·empathy +10 / B: creativity·adventure +10 / O: leadership·sociability +10 / AB: analysis·intuition +10. 나머지 50.
 > 혈액형 성격론은 과학적 근거가 없다는 점을 상세 화면에 짧게 고지.

@@ -154,7 +154,6 @@
       "generating": "Preparing today's fortune",
       "boostTitle": "Today's stat boost",
       "noMbti": "Opens after your MBTI analysis",
-      "tojeongSoon": "Tojeong fortune will open once its calculation source is verified.",
       "diaryTitle": "Today's line",
       "diaryOpen": "Leave a line",
       "shareText": "My fortune today: {score}! {summary}",
@@ -506,6 +505,61 @@
       "element": "Element: {element}",
       "bloodTitle": "My blood type",
       "bloodNote": "Blood-type personality theory has no scientific basis. Enjoy it just for fun."
+    },
+    "face": {
+      "title": "Face Reading",
+      "guide": "Face the camera in good light so your whole face is visible.",
+      "privacy": "Your photo is deleted right after analysis. We never store it.",
+      "noJudge": "We don't judge age, gender, looks or health — only the personality tendencies your impression suggests.",
+      "selfOnly": "Please upload only a photo of yourself.",
+      "consent": "I've read the above and agree to the face photo analysis",
+      "pick": "Take / choose a photo",
+      "analyzing": "Reading your impression…",
+      "retake": "We couldn't see your face clearly. Please retake it facing forward in good light.",
+      "tooLarge": "The photo is too large (max 4MB)",
+      "result": "What your impression says",
+      "features": {
+        "forehead": "Forehead",
+        "brows": "Brows",
+        "eyes": "Gaze",
+        "nose": "Nose bridge",
+        "mouth": "Mouth corners",
+        "jaw": "Jawline"
+      }
+    },
+    "name": {
+      "title": "Name Reading",
+      "guide": "Enter your Korean name, family name and given name separately.",
+      "surname": "Family",
+      "given": "Given name",
+      "hangulOnly": "Only Korean (Hangul) names are supported for now. Hanja stroke readings aren't supported yet.",
+      "privacy": "Your name is never stored or sent to AI. Only the computed results (elements, strokes) are kept.",
+      "submit": "Read my name",
+      "analyzing": "Reading your name…",
+      "soundElements": "Elements of the sounds",
+      "grids": "Four stroke grids",
+      "grid": {
+        "won": "Won (youth)",
+        "hyeong": "Hyeong (young adult)",
+        "i": "I (middle years)",
+        "jeong": "Jeong (overall)"
+      },
+      "basis": "Calculated from the Five Elements of each initial sound (Hunminjeongeum basis) and Hangul letter strokes. Stroke conventions vary slightly by school."
+    },
+    "tojeong": {
+      "intro": "Your {year} Tojeong Bigyeol",
+      "introDesc": "We build this year's hexagram from your lunar birth date and read the flow of each month.",
+      "generate": "See this year's reading",
+      "generating": "Building your hexagram…",
+      "yearLabel": "{year} · {ganzhi} year · age {age} (Korean count)",
+      "gua": "This year's hexagram",
+      "upper": "Upper",
+      "middle": "Middle",
+      "lower": "Lower",
+      "basis": "Upper from age and the year's number, middle from the birth month's length and month number, lower from the birth day and day number (pre-heaven numbers). Details differ by edition, so we fixed this method.",
+      "monthly": "Month by month",
+      "month": "Lunar month {m}",
+      "now": "This month"
     }
   },
   "mbtiTest": {

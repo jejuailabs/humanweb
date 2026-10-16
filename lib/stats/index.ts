@@ -55,13 +55,18 @@ const TEN_GOD_BOOST: Record<TenGodGroup, StatKey[]> = {
   officer: ["leadership", "stability"],
   resource: ["analysis", "intuition", "empathy"],
 };
-export function statsFromSaju(saju: Pick<SajuResult, "elements" | "tenGods">): Stats {
+// 오행 비율 → 기본 점수 (사주·이름 발음오행 공통)
+export function statsFromElements(elements: Record<Element, number>): Stats {
   const out = fill(50);
   for (const k of STAT_KEYS) {
     const links = SAJU_LINKS[k];
-    const avg = links.reduce((s, e) => s + saju.elements[e], 0) / links.length;
+    const avg = links.reduce((s, e) => s + elements[e], 0) / links.length;
     out[k] = clamp(50 + 150 * (avg - 0.2));
   }
+  return out;
+}
+export function statsFromSaju(saju: Pick<SajuResult, "elements" | "tenGods">): Stats {
+  const out = statsFromElements(saju.elements);
   for (const [g, keys] of Object.entries(TEN_GOD_BOOST) as [TenGodGroup, StatKey[]][]) {
     const n = saju.tenGods[g];
     const delta = n >= 2 ? 8 : n === 0 ? -5 : 0;
@@ -87,6 +92,23 @@ export function statsFromPalm(f: PalmFeatures): Stats {
     leadership: f.fingerRatio,
     adventure: f.fingerRatio,
     sociability: 50,
+  };
+}
+
+// 2-6. 관상: AI가 돌려준 인상 특징(0~100) → 스탯 [자체 설계]. 특징이 없는 스탯은 50
+export type FaceFeatures = { forehead: number; brows: number; eyes: number; nose: number; mouth: number; jaw: number };
+export function statsFromFace(f: FaceFeatures): Stats {
+  return {
+    analysis: f.forehead,
+    intuition: (f.forehead + f.eyes) / 2,
+    leadership: f.brows,
+    drive: (f.brows + f.jaw) / 2,
+    empathy: f.eyes,
+    stability: f.nose,
+    charisma: (f.nose + f.jaw) / 2,
+    sociability: f.mouth,
+    adventure: f.jaw,
+    creativity: 50,
   };
 }
 

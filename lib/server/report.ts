@@ -32,6 +32,8 @@ export async function profileSummary(uid: string) {
       animal: a.saju?.animal ?? null,
       blood: a.blood?.type ?? null,
       palm: a.palm ? { summary: a.palm.summary } : null,
+      face: a.face ? { summary: a.face.summary } : null,
+      name: a.name ? { soundElements: a.name.elements, grids: a.name.grids } : null,
     },
   };
 }
@@ -46,7 +48,7 @@ export async function generateReport(uid: string) {
     name: "personality_report",
     schema: reportSchema,
     lang,
-    system: `You are YEON, a warm counselor who integrates MBTI, Saju (Four Pillars), zodiac, blood type and palm reading into one portrait. Write in ${lang === "ko" ? "Korean" : "English"}.\n${TONE_RULES(lang)}\nGlossary: ${GLOSSARY}\nThis is for fun and self-reflection, not a prediction or diagnosis.`,
+    system: `You are YEON, a warm counselor who integrates MBTI, Saju (Four Pillars), zodiac, blood type, palm reading, face reading and name reading into one portrait. Write in ${lang === "ko" ? "Korean" : "English"}.\n${TONE_RULES(lang)}\nGlossary: ${GLOSSARY}\nThis is for fun and self-reflection, not a prediction or diagnosis.`,
     user: `Profile summary (JSON): ${JSON.stringify(summary)}
 Write the report:
 - title: one-line title in ${lang === "ko" ? "Korean (e.g. \"마음을 읽는 직관적 전략가\")" : "English (e.g. \"The Intuitive Strategist\")"}

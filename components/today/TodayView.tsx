@@ -13,7 +13,8 @@ import { OrnamentDivider } from "@/components/ui/SectionTitle";
 import { SEGMENTED_WRAP, segmentedItem } from "@/components/ui/segmented";
 import { localDateKey, shiftDate, useApi } from "@/lib/client/api";
 import { shareCard } from "@/lib/client/share";
-import type { DailyResponse, Me } from "@/lib/client/types";
+import type { DailyResponse, Me, TojeongResponse } from "@/lib/client/types";
+import { Link } from "@/i18n/navigation";
 
 // 언어권별 기본 탭 순서 (07_I18N_THEME.md)
 const ORDER = {
@@ -38,6 +39,8 @@ function TodayInner({ me }: { me: Me }) {
   const { data, error, isLoading } = useApi<DailyResponse>(`/api/daily?date=${date}&lang=${locale}${isToday ? "&today=1" : ""}`);
   const order = ORDER[locale] ?? ORDER.en;
   const [tab, setTab] = useState<Cat>(order[0]);
+  const { data: tj } = useApi<TojeongResponse>("/api/tojeong");
+  const tjMonth = tj?.tojeong ? { score: tj.tojeong.scores[tj.month - 1], text: tj.tojeong.months[tj.month - 1] } : null;
 
   const personal = data?.items.daymaster ?? data?.items.zodiac;
   const current = data?.items[tab];
@@ -152,16 +155,22 @@ function TodayInner({ me }: { me: Me }) {
             </div>
           </ImageCard>
 
-          {/* 이번 달 토정비결 — 계산 기준 문헌 [확인 필요] */}
-          <ImageCard src="/assets/bg/today-plum.webp" scrim="left" className="mt-4">
-            <div className="flex items-center gap-4 p-5">
-              <CalendarDays className="size-6 shrink-0 text-gold" strokeWidth={1.3} aria-hidden />
-              <span className="flex flex-1 flex-col">
-                <span className="font-display text-lg">{t("tojeongTitle")}</span>
-                <span className="text-xs text-on-image-muted">{t("tojeongSoon")}</span>
-              </span>
-            </div>
-          </ImageCard>
+          {/* 이번 달 토정비결 (02_SCREENS.md). 아직 안 봤으면 분석 화면으로 안내 */}
+          <Link href="/analyze/tojeong" className="mt-4 block">
+            <ImageCard src="/assets/bg/today-plum.webp" scrim="left">
+              <div className="flex items-center gap-4 p-5">
+                <CalendarDays className="size-6 shrink-0 text-gold" strokeWidth={1.3} aria-hidden />
+                <span className="flex flex-1 flex-col gap-0.5">
+                  <span className="font-display text-lg">
+                    {t("tojeongTitle")}
+                    {tjMonth != null && <span className="ml-2 text-sm text-gold">{tjMonth.score}</span>}
+                  </span>
+                  <span className="line-clamp-2 text-xs text-on-image-muted">{tjMonth ? tjMonth.text : t("tojeongDesc")}</span>
+                </span>
+                <ChevronRight className="size-4 shrink-0 text-on-image-muted" aria-hidden />
+              </div>
+            </ImageCard>
+          </Link>
 
           {/* 오늘의 한 줄 — 지난 날짜면 그날의 일기 */}
           <div className="mt-4">
