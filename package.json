@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "firebase": "^13.0.0",
-    "firebase-admin": "^14.5.0",
+    "firebase-admin": "^13.10.0",
     "lucide-react": "^1.57.0",
     "lunar-javascript": "^1.7.7",
     "next": "16.4.2",
